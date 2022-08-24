@@ -11,10 +11,22 @@ const kAppBarHeight = 56.0;
 
 const kRadius = 0.0;
 
+const kDefaultPadding = 20.0;
+
 const String pieChart = 'assets/images/pieChart.png';
 const String trophy = 'assets/images/trophy.png';
 const String chat = 'assets/images/chat.png';
 const String whiteShape = 'assets/images/whitebg.svg';
+
+const kHeadTextStyle = TextStyle(
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kSubTextStyle = TextStyle(
+  fontSize: 18.0,
+  color: kLightColor,
+);
 
 List<Map<String, String>> introData = [
   {
