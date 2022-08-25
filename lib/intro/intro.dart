@@ -12,7 +12,10 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
+  //* Page controller
   var _controller = PageController();
+
+  //* current page variable
   var _currentPage = 0;
 
   @override
@@ -29,9 +32,11 @@ class _IntroState extends State<Intro> {
       body: Column(
         children: [
           Expanded(
+            //* View page list
             child: PageView.builder(
               itemCount: introData.length,
               itemBuilder: (context, index) {
+                //* Returns intro data info
                 return IntroData(
                   introImage: introData[index]['image'] as String,
                   headText: introData[index]['headText'] as String,
@@ -45,7 +50,6 @@ class _IntroState extends State<Intro> {
               },
             ),
           ),
-          
           IntroButton(
             currentPage: _currentPage,
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class IntroData extends StatelessWidget {
+  //* fields or data of the intro pages
   final String introImage, headText, descText;
 
   const IntroData({
@@ -20,11 +21,13 @@ class IntroData extends StatelessWidget {
           flex: 0,
           child: Stack(
             children: [
+              //* Sets svgpicture white background
               SvgPicture.asset(
                 whiteShape,
                 color: kWhiteColor,
                 fit: BoxFit.cover,
               ),
+              //* Positioned the picture of the intro page
               Positioned(
                 right: 0,
                 left: 0,
@@ -37,11 +40,13 @@ class IntroData extends StatelessWidget {
             ],
           ),
         ),
+        //* Head text
         Text(
           headText,
           style: kHeadTextStyle,
           textAlign: TextAlign.center,
         ),
+        //* Description
         Padding(
           padding: const EdgeInsets.all(kDefaultPadding),
           child: Text(

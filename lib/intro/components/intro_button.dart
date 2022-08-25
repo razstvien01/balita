@@ -4,6 +4,7 @@ import 'package:balita/onboard/onboard.dart';
 import 'package:flutter/material.dart';
 
 class IntroButton extends StatelessWidget {
+  //* current page of the pageview list
   final int _currentPage;
 
   const IntroButton({
@@ -15,6 +16,7 @@ class IntroButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        //* reveals skip button in page 0 to 1 and hides in page 3
         (_currentPage == 0 || _currentPage == 1)
             ? ClearDefaultButton(
                 name: 'Skip',
@@ -30,6 +32,7 @@ class IntroButton extends StatelessWidget {
                 name: '',
                 press: () {},
               ),
+        //* Linear progress indicator
         Container(
           width: MediaQuery.of(context).size.width / 1.8,
           padding: EdgeInsets.symmetric(
@@ -41,6 +44,8 @@ class IntroButton extends StatelessWidget {
             valueColor: AlwaysStoppedAnimation<Color>(kPrimaryColor),
           ),
         ),
+        
+        //* hides skip button in page 0 to 1 and shows in page 3
         (_currentPage == 2)
             ? ClearDefaultButton(
                 name: 'Done',

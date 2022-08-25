@@ -2,6 +2,7 @@ import 'package:balita/constant.dart';
 import 'package:flutter/material.dart';
 
 class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget{
+  //* app bar height
   @override
   // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kAppBarHeight);
@@ -13,7 +14,6 @@ class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: kWhiteColor,
       elevation: kRadius,
-      title: Text('name'),
     );
   }
   

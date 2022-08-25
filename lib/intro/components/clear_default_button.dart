@@ -2,7 +2,9 @@ import 'package:balita/constant.dart';
 import 'package:flutter/material.dart';
 
 class ClearDefaultButton extends StatelessWidget {
+  //* Method for clicking a button
   final VoidCallback press;
+  //* Button text
   final String name;
 
   const ClearDefaultButton({
