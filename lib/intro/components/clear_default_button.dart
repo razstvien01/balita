@@ -18,14 +18,14 @@ class ClearDefaultButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: TextButton(
-          onPressed: press,
-          child: Text(
-            name.toUpperCase(),
-            style: TextStyle(
-              color: kPrimaryColor,
-            ),
+        onPressed: press,
+        child: Text(
+          name.toUpperCase(),
+          style: TextStyle(
+            color: kPrimaryColor,
           ),
-          ),
+        ),
+      ),
     );
   }
 }

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: kAccentColor
+          secondary:  kDarkColor
         ),
         highlightColor: kTransparent,
         fontFamily: 'Jaapokki',

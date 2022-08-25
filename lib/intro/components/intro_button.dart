@@ -15,6 +15,7 @@ class IntroButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         //* reveals skip button in page 0 to 1 and hides in page 3
         (_currentPage == 0 || _currentPage == 1)
@@ -39,9 +40,9 @@ class IntroButton extends StatelessWidget {
             vertical: kDefaultPadding,
           ),
           child: LinearProgressIndicator(
-            backgroundColor: kWhiteColor,
+            backgroundColor: kLightColor,
             value: (_currentPage + 1) / introData.length,
-            valueColor: AlwaysStoppedAnimation<Color>(kPrimaryColor),
+            valueColor: AlwaysStoppedAnimation<Color>(kDarkColor),
           ),
         ),
         

@@ -12,7 +12,7 @@ class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: kWhiteColor,
+      backgroundColor: kDarkColor,
       elevation: kRadius,
     );
   }

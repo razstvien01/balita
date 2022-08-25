@@ -27,7 +27,7 @@ class _IntroState extends State<Intro> {
     });
 
     return Scaffold(
-      backgroundColor: kAccentColor,
+      backgroundColor: kLightColor,
       appBar: EmptyAppBar(),
       body: Column(
         children: [

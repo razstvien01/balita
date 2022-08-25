@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 //* Color constants
-const kPrimaryColor = Color(0xFFFF8084);
-const kAccentColor = Color(0xFFF1F1F1);
-const kWhiteColor = Color(0xFFFFFFFF);
-const kLightColor = Color(0xFF808080);
-const kDarkColor = Color(0xFF303030);
+const kPrimaryColor = Color(0xFFFFFFFF);
+const kLightColor = Color(0xFF01B0D3);
+const kDarkColor = Color(0xFF242333);
 const kTransparent = Colors.transparent;
 
 //* Default appbar height
@@ -16,23 +14,34 @@ const kRadius = 0.0;
 
 //* Default padding
 const kDefaultPadding = 20.0;
+const kLessPadding = 10.0;
+const kFixPadding = 16.0;
+
+const kShape = 30.0;
 
 //* images path
 const String pieChart = 'assets/images/pieChart.png';
 const String trophy = 'assets/images/trophy.png';
 const String chat = 'assets/images/chat.png';
 const String whiteShape = 'assets/images/whitebg.svg';
+const String logo = 'assets/images/logo.png';
 
 //* Head text style
 const kHeadTextStyle = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.bold,
+  color: kPrimaryColor,
 );
 
 //* Head sub text style
 const kSubTextStyle = TextStyle(
   fontSize: 18.0,
-  color: kLightColor,
+  color: kPrimaryColor,
+);
+
+const kTitleTextStyle = TextStyle(
+  fontSize: 22.0,
+  color: kPrimaryColor,
 );
 
 //* Intro data map

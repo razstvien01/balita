@@ -24,7 +24,7 @@ class IntroData extends StatelessWidget {
               //* Sets svgpicture white background
               SvgPicture.asset(
                 whiteShape,
-                color: kWhiteColor,
+                color: kDarkColor,
                 fit: BoxFit.cover,
               ),
               //* Positioned the picture of the intro page
