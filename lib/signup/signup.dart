@@ -1,6 +1,8 @@
 import 'package:balita/constant.dart';
+import 'package:balita/home/home.dart';
 import 'package:balita/intro/components/empty_appbar.dart';
 import 'package:balita/onboard/components/top_logo.dart';
+import 'package:balita/signin/signin.dart';
 import 'package:balita/signup/components/bottom_widgets.dart';
 import 'package:balita/signup/components/center_textfields.dart';
 import 'package:balita/signup/components/clear_full_button.dart';
@@ -27,7 +29,25 @@ class _SignUpState extends State<SignUp> {
             children: [
               TopLogo(),
               CenterTextFields(),
-              BottomWidgets(),
+              BottomWidgets(
+                btnText: 'Sign Up',
+                cfbText1: 'Sign In',
+                cfbText2: 'Already have an account? ',
+                onPressed1: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return SignIn();
+                    },
+                  ));
+                },
+                onPressed2: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Home();
+                    },
+                  ));
+                },
+              ),
             ],
           ),
         ),

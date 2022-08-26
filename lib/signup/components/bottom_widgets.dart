@@ -5,8 +5,16 @@ import 'package:balita/signup/components/default_button.dart';
 import 'package:flutter/material.dart';
 
 class BottomWidgets extends StatelessWidget {
+  final String cfbText1, cfbText2;
+  final String btnText;
+  final VoidCallback onPressed1, onPressed2;
   const BottomWidgets({
     super.key,
+    required this.cfbText1,
+    required this.cfbText2,
+    required this.btnText,
+    required this.onPressed1,
+    required this.onPressed2,
   });
 
   @override
@@ -17,25 +25,13 @@ class BottomWidgets extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ClearFullButton(
-            colorText: 'Sign In',
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return SignIn();
-                },
-              ));
-            },
-            whiteText: 'Already have an account? ',
+            colorText: cfbText1,
+            onPressed: onPressed1,
+            whiteText: cfbText2,
           ),
           DefaultButton(
-            btnText: 'Sign Up',
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return Home();
-                },
-              ));
-            },
+            btnText: btnText,
+            onPressed: onPressed2,
           ),
         ],
       ),

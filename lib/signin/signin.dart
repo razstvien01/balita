@@ -3,6 +3,7 @@ import 'package:balita/forgot/forgot.dart';
 import 'package:balita/home/home.dart';
 import 'package:balita/intro/components/empty_appbar.dart';
 import 'package:balita/onboard/components/top_logo.dart';
+import 'package:balita/signup/components/bottom_widgets.dart';
 import 'package:balita/signup/components/clear_full_button.dart';
 import 'package:balita/signup/components/default_button.dart';
 import 'package:balita/signup/components/default_textfield.dart';
@@ -66,31 +67,24 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClearFullButton(
-                      whiteText: 'Don\'t have an account? ',
-                      colorText: 'Sign Up',
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return SignUp();
-                            }
-                          ),
-                        );
-                      },
-                    ),
-                    DefaultButton(
-                      btnText: 'Sign In',
-                      onPressed: () {
-                        // Navigator.of(context).push()''
-                      },
-                    ),
-                  ],
-                ),
+              BottomWidgets(
+                cfbText1: 'Sign Up',
+                cfbText2: 'Don\'t have an account? ',
+                btnText: 'Sign In',
+                onPressed1: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return SignUp();
+                    },
+                  ));
+                },
+                onPressed2: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Home();
+                    },
+                  ));
+                },
               ),
             ],
           ),
