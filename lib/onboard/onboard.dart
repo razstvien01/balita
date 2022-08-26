@@ -1,8 +1,8 @@
-import 'package:balita/constant.dart';
-import 'package:balita/intro/components/empty_appbar.dart';
-import 'package:balita/onboard/components/bottom_buttons.dart';
-import 'package:balita/onboard/components/center_tagline.dart';
-import 'package:balita/onboard/components/top_logo.dart';
+import 'package:news_flight/constant.dart';
+import 'package:news_flight/intro/components/empty_appbar.dart';
+import 'package:news_flight/onboard/components/bottom_buttons.dart';
+import 'package:news_flight/onboard/components/center_tagline.dart';
+import 'package:news_flight/onboard/components/top_logo.dart';
 import 'package:flutter/material.dart';
 
 class Onboard extends StatelessWidget {

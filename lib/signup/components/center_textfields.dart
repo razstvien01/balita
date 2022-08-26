@@ -1,5 +1,5 @@
-import 'package:balita/constant.dart';
-import 'package:balita/signup/components/default_textfield.dart';
+import 'package:news_flight/constant.dart';
+import 'package:news_flight/signup/components/default_textfield.dart';
 import 'package:flutter/material.dart';
 
 class CenterTextFields extends StatelessWidget {

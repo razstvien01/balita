@@ -1,6 +1,6 @@
 {
-    "name": "balita",
-    "short_name": "balita",
+    "name": "news_flight",
+    "short_name": "news_flight",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

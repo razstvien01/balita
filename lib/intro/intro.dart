@@ -1,7 +1,7 @@
-import 'package:balita/constant.dart';
-import 'package:balita/intro/components/empty_appbar.dart';
-import 'package:balita/intro/components/intro_button.dart';
-import 'package:balita/intro/components/intro_data.dart';
+import 'package:news_flight/constant.dart';
+import 'package:news_flight/intro/components/empty_appbar.dart';
+import 'package:news_flight/intro/components/intro_button.dart';
+import 'package:news_flight/intro/components/intro_data.dart';
 import 'package:flutter/material.dart';
 
 class Intro extends StatefulWidget {

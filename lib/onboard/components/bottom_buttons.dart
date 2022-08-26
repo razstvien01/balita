@@ -1,7 +1,7 @@
-import 'package:balita/constant.dart';
-import 'package:balita/onboard/components/outlined_default_button.dart';
-import 'package:balita/signin/signin.dart';
-import 'package:balita/signup/signup.dart';
+import 'package:news_flight/constant.dart';
+import 'package:news_flight/onboard/components/outlined_default_button.dart';
+import 'package:news_flight/signin/signin.dart';
+import 'package:news_flight/signup/signup.dart';
 import 'package:flutter/material.dart';
 
 class BottomButtons extends StatelessWidget {

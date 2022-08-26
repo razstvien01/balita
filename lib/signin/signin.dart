@@ -1,13 +1,13 @@
-import 'package:balita/constant.dart';
-import 'package:balita/forgot/forgot.dart';
-import 'package:balita/home/home.dart';
-import 'package:balita/intro/components/empty_appbar.dart';
-import 'package:balita/onboard/components/top_logo.dart';
-import 'package:balita/signup/components/bottom_widgets.dart';
-import 'package:balita/signup/components/clear_full_button.dart';
-import 'package:balita/signup/components/default_button.dart';
-import 'package:balita/signup/components/default_textfield.dart';
-import 'package:balita/signup/signup.dart';
+import 'package:news_flight/constant.dart';
+import 'package:news_flight/forgot/forgot.dart';
+import 'package:news_flight/home/home.dart';
+import 'package:news_flight/intro/components/empty_appbar.dart';
+import 'package:news_flight/onboard/components/top_logo.dart';
+import 'package:news_flight/signup/components/bottom_widgets.dart';
+import 'package:news_flight/signup/components/clear_full_button.dart';
+import 'package:news_flight/signup/components/default_button.dart';
+import 'package:news_flight/signup/components/default_textfield.dart';
+import 'package:news_flight/signup/signup.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {

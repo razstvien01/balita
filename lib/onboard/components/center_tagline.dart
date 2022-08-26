@@ -1,4 +1,4 @@
-import 'package:balita/constant.dart';
+import 'package:news_flight/constant.dart';
 import 'package:flutter/material.dart';
 
 class CenterTagLine extends StatelessWidget {
