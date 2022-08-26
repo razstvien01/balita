@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const kPrimaryColor = Color(0xFFFFFFFF);
 const kLightColor = Color(0xFF01B0D3);
 const kDarkColor = Color(0xFF242333);
+const kAccentColor = Color.fromARGB(255, 98, 95, 138);
 const kTransparent = Colors.transparent;
 
 //* Default appbar height
@@ -39,9 +40,19 @@ const kSubTextStyle = TextStyle(
   color: kPrimaryColor,
 );
 
+const kSmallTextStyle = TextStyle(
+  fontSize: 16.0,
+  color: kPrimaryColor,
+);
+
 const kTitleTextStyle = TextStyle(
   fontSize: 22.0,
   color: kPrimaryColor,
+);
+
+const kLightTextStyke = TextStyle(
+  fontSize: 20.0,
+  color: kLightColor
 );
 
 //* Intro data map

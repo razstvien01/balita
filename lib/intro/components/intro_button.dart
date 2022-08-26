@@ -50,7 +50,13 @@ class IntroButton extends StatelessWidget {
         (_currentPage == 2)
             ? ClearDefaultButton(
                 name: 'Done',
-                press: () {},
+                press: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return Onboard();
+                    }),
+                  );
+                },
               )
             : ClearDefaultButton(
                 name: '',
