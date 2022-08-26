@@ -6,6 +6,7 @@ import 'package:balita/onboard/components/top_logo.dart';
 import 'package:balita/signup/components/clear_full_button.dart';
 import 'package:balita/signup/components/default_button.dart';
 import 'package:balita/signup/components/default_textfield.dart';
+import 'package:balita/signup/signup.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -72,11 +73,21 @@ class _SignInState extends State<SignIn> {
                     ClearFullButton(
                       whiteText: 'Don\'t have an account? ',
                       colorText: 'Sign Up',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SignUp();
+                            }
+                          ),
+                        );
+                      },
                     ),
                     DefaultButton(
                       btnText: 'Sign In',
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navigator.of(context).push()''
+                      },
                     ),
                   ],
                 ),

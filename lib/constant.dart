@@ -50,7 +50,7 @@ const kTitleTextStyle = TextStyle(
   color: kPrimaryColor,
 );
 
-const kLightTextStyke = TextStyle(
+const kLightTextStyle = TextStyle(
   fontSize: 20.0,
   color: kLightColor
 );
