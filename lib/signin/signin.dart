@@ -1,12 +1,9 @@
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/forgot/forgot.dart';
 import 'package:news_flight/home/home.dart';
 import 'package:news_flight/intro/components/empty_appbar.dart';
 import 'package:news_flight/onboard/components/top_logo.dart';
+import 'package:news_flight/signin/components/signin_ctf.dart';
 import 'package:news_flight/signup/components/bottom_widgets.dart';
-import 'package:news_flight/signup/components/clear_full_button.dart';
-import 'package:news_flight/signup/components/default_button.dart';
-import 'package:news_flight/signup/components/default_textfield.dart';
 import 'package:news_flight/signup/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -29,44 +26,7 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: [
               TopLogo(),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    DefaultTextField(
-                      hintText: 'Email Address',
-                      icon: Icons.email,
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: false,
-                    ),
-                    SizedBox(
-                      height: kFixPadding,
-                    ),
-                    DefaultTextField(
-                      hintText: 'Password',
-                      icon: Icons.lock,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
-                    ),
-                    SizedBox(
-                      height: kFixPadding,
-                    ),
-                    ClearFullButton(
-                      whiteText: 'I forgot my ',
-                      colorText: 'Password',
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Forgot();
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              SignInCTF(),
               BottomWidgets(
                 cfbText1: 'Sign Up',
                 cfbText2: 'Don\'t have an account? ',

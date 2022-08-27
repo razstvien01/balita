@@ -3,7 +3,12 @@ import 'package:news_flight/signup/components/default_textfield.dart';
 import 'package:flutter/material.dart';
 
 class CenterTextFields extends StatelessWidget {
-  const CenterTextFields({
+  final _userController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController1 = TextEditingController();
+  final _passwordController2 = TextEditingController();
+  
+  CenterTextFields({
     super.key,
   });
 
@@ -15,6 +20,7 @@ class CenterTextFields extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DefaultTextField(
+            controller: _userController,
             hintText: 'Username',
             icon: Icons.person,
             keyboardType: TextInputType.text,
@@ -24,6 +30,7 @@ class CenterTextFields extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            controller:_emailController,
             hintText: 'Email Address',
             icon: Icons.email,
             keyboardType: TextInputType.emailAddress,
@@ -33,6 +40,7 @@ class CenterTextFields extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            controller: _passwordController1,
             hintText: 'Password',
             icon: Icons.lock,
             keyboardType: TextInputType.visiblePassword,
@@ -42,6 +50,7 @@ class CenterTextFields extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            controller: _passwordController2,
             hintText: 'Confirm Password',
             icon: Icons.lock,
             keyboardType: TextInputType.visiblePassword,

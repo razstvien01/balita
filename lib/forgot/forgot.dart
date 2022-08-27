@@ -14,6 +14,8 @@ class Forgot extends StatefulWidget {
 }
 
 class _ForgotState extends State<Forgot> {
+  final _emailController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +46,7 @@ class _ForgotState extends State<Forgot> {
                       height: kDefaultPadding,
                     ),
                     DefaultTextField(
+                      controller: _emailController,
                       hintText: 'Email Address',
                       icon: Icons.email,
                       keyboardType: TextInputType.emailAddress,

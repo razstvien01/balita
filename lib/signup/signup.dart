@@ -5,8 +5,6 @@ import 'package:news_flight/onboard/components/top_logo.dart';
 import 'package:news_flight/signin/signin.dart';
 import 'package:news_flight/signup/components/bottom_widgets.dart';
 import 'package:news_flight/signup/components/center_textfields.dart';
-import 'package:news_flight/signup/components/clear_full_button.dart';
-import 'package:news_flight/signup/components/default_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {

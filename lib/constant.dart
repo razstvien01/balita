@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'signup/components/default_textfield.dart';
+
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);
 const kLightColor = Color(0xFF01B0D3);
@@ -34,7 +36,7 @@ const kHeadTextStyle = TextStyle(
   color: kPrimaryColor,
 );
 
-//* Head sub text style
+//* Text style constants
 const kSubTextStyle = TextStyle(
   fontSize: 18.0,
   color: kPrimaryColor,

@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 class DefaultTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
+  final TextEditingController controller;
   final keyboardType, obscureText;
+
   const DefaultTextField({
     super.key,
     required this.hintText,
     required this.icon,
+    required this.controller,
     required this.keyboardType,
     required this.obscureText,
   });
@@ -23,6 +26,7 @@ class DefaultTextField extends StatelessWidget {
         color: kAccentColor,
       ),
       child: TextField(
+        controller: controller,
         cursorColor: kPrimaryColor,
         textInputAction: TextInputAction.next,
         keyboardType: keyboardType,

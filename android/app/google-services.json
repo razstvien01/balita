@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "623482346985",
+    "project_id": "news-flight",
+    "storage_bucket": "news-flight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623482346985:android:bf28757e0b68a39f5dff78",
+        "android_client_info": {
+          "package_name": "com.example.news_flight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623482346985-vsll21ktmtcqa1nf2o9pb6kq2ga7gb7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChG34na3oJ2Q-BeVAhXfmDxYSY99AdT1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623482346985-vsll21ktmtcqa1nf2o9pb6kq2ga7gb7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
