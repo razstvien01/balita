@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/intro/components/empty_appbar.dart';
 import 'package:news_flight/onboard/components/top_logo.dart';

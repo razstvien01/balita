@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/forgot/forgot.dart';
 import 'package:news_flight/home/home.dart';
 import 'package:news_flight/intro/components/empty_appbar.dart';
 import 'package:news_flight/onboard/components/top_logo.dart';
 import 'package:news_flight/signin/components/signin_ctf.dart';
 import 'package:news_flight/signup/components/bottom_widgets.dart';
+import 'package:news_flight/signup/components/clear_full_button.dart';
+import 'package:news_flight/signup/components/default_textfield.dart';
 import 'package:news_flight/signup/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +19,30 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    print('sign in pressed');
+    print(_emailController.text.trim());
+    print(_passwordController.text.trim());
+    
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    
+    Navigator.of(context).pop();
+  }
+  
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +54,46 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: [
               TopLogo(),
-              SignInCTF(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DefaultTextField(
+                      controller: _emailController,
+                      hintText: 'Email Address',
+                      icon: Icons.email,
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: false,
+                    ),
+                    SizedBox(
+                      height: kFixPadding,
+                    ),
+                    DefaultTextField(
+                      controller: _passwordController,
+                      hintText: 'Password',
+                      icon: Icons.lock,
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: kFixPadding,
+                    ),
+                    ClearFullButton(
+                      whiteText: 'I forgot my ',
+                      colorText: 'Password',
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Forgot();
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
               BottomWidgets(
                 cfbText1: 'Sign Up',
                 cfbText2: 'Don\'t have an account? ',
@@ -38,13 +105,7 @@ class _SignInState extends State<SignIn> {
                     },
                   ));
                 },
-                onPressed2: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return Home();
-                    },
-                  ));
-                },
+                onPressed2: signIn,
               ),
             ],
           ),

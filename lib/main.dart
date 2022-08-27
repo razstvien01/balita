@@ -43,6 +43,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Jaapokki',
       ),
       home: Intro(),
+      
+      routes: {
+        '/intro': (context) => const Intro(),
+        // '/intro/onboard': 
+      },
     );
   }
 }
