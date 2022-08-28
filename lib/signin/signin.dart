@@ -3,6 +3,7 @@ import 'package:news_flight/constant.dart';
 import 'package:news_flight/forgot/forgot.dart';
 import 'package:news_flight/home/home.dart';
 import 'package:news_flight/intro/components/empty_appbar.dart';
+import 'package:news_flight/intro/intro.dart';
 import 'package:news_flight/onboard/components/top_logo.dart';
 import 'package:news_flight/signin/components/signin_ctf.dart';
 import 'package:news_flight/signup/components/bottom_widgets.dart';
@@ -32,7 +33,8 @@ class _SignInState extends State<SignIn> {
       password: _passwordController.text.trim(),
     );
     
-    Navigator.of(context).pop();
+    // Navigator.of(context).popUntil(sett
+    // });
   }
   
   @override

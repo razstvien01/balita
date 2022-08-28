@@ -31,46 +31,31 @@ class _IntroState extends State<Intro> {
     return Scaffold(
       backgroundColor: kAccentColor,
       appBar: EmptyAppBar(),
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong!'));
-          } else if (snapshot.hasData) {
-            return Home();
-          } else {
-            return Column(
-              children: [
-                Expanded(
-                  //* View page list
-                  child: PageView.builder(
-                    itemCount: introData.length,
-                    itemBuilder: (context, index) {
-                      //* Returns intro data info
-                      return IntroData(
-                        introImage: introData[index]['image'] as String,
-                        headText: introData[index]['headText'] as String,
-                        descText: introData[index]['descText'] as String,
-                      );
-                    },
-                    onPageChanged: (page) {
-                      setState(() {
-                        _currentPage = page;
-                      });
-                    },
-                  ),
-                ),
-                IntroButton(
-                  currentPage: _currentPage,
-                ),
-              ],
-            );
-          }
-        },
+      body: Column(
+        children: [
+          Expanded(
+            //* View page list
+            child: PageView.builder(
+              itemCount: introData.length,
+              itemBuilder: (context, index) {
+                //* Returns intro data info
+                return IntroData(
+                  introImage: introData[index]['image'] as String,
+                  headText: introData[index]['headText'] as String,
+                  descText: introData[index]['descText'] as String,
+                );
+              },
+              onPageChanged: (page) {
+                setState(() {
+                  _currentPage = page;
+                });
+              },
+            ),
+          ),
+          IntroButton(
+            currentPage: _currentPage,
+          ),
+        ],
       ),
     );
   }

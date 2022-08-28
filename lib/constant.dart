@@ -27,7 +27,8 @@ const String pieChart = 'assets/images/pieChart.png';
 const String trophy = 'assets/images/trophy.png';
 const String chat = 'assets/images/chat.png';
 const String whiteShape = 'assets/images/whitebg.svg';
-const String logo = 'assets/images/logo.png';
+const String logo = 'assets/images/logo_nf.png';
+const String newspaper = 'assets/images/newspaper.png';
 
 //* Head text style
 const kHeadTextStyle = TextStyle(
@@ -60,20 +61,20 @@ const kLightTextStyle = TextStyle(
 //* Intro data map
 List<Map<String, String>> introData = [
   {
-    'image': pieChart,
-    'headText': 'Track your routine',
+    'image': newspaper,
+    'headText': 'Your daily newspaper',
     'descText':
-        "Whether it's sets, reps, weight used, you can track it all with our intuitive interface.",
+        "sfjisfoiwesfgjewgoewgosdgndsgogneog goiewogiewoig 0egjewogoiewg",
   },
   {
     'image': trophy,
-    'headText': 'Set personal goals',
+    'headText': 'Are you informed?',
     'descText':
-        "We're all in the gym for a reason: goals. set goals for diet and fitness.",
+        "selfgs m erhpkp honoi no[i[go[No ogn[okn ,mvngoib mcval'",
   },
   {
     'image': chat,
-    'headText': 'Chat with others',
-    'descText': "Inspire and help each other reach fitness and diet goals.",
+    'headText': 'Be nice to each other.',
+    'descText': "afjfoiewgjewgojbn ospgjg m opignb oin oigns  osgns",
   },
 ];

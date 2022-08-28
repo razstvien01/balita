@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:news_flight/auth_state_change/auth_state_change.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/firebase_options.dart';
 import 'package:news_flight/intro/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:news_flight/onboard/onboard.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,11 +44,12 @@ class MyApp extends StatelessWidget {
         highlightColor: kTransparent,
         fontFamily: 'Jaapokki',
       ),
-      home: Intro(),
+      home: AuthStateChange(),
       
       routes: {
         '/intro': (context) => const Intro(),
-        // '/intro/onboard': 
+        '/intro/onboard': (context) => const Onboard(),
+        '/auth': (context) => const AuthStateChange()
       },
     );
   }

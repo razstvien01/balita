@@ -13,6 +13,7 @@ class Onboard extends StatelessWidget {
     return Scaffold(
       backgroundColor: kDarkColor,
       appBar: EmptyAppBar(),
+      
       body: Column(
         children: [
           TopLogo(),
