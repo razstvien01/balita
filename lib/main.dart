@@ -7,6 +7,8 @@ import 'package:news_flight/intro/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:news_flight/onboard/onboard.dart';
+import 'package:news_flight/signin/signin.dart';
+import 'package:news_flight/signup/signup.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,8 +51,10 @@ class MyApp extends StatelessWidget {
       
       routes: {
         '/intro': (context) => const Intro(),
-        '/onboard': (context) => const Onboard(),
         '/auth': (context) => const AuthStateChange(),
+        '/onboard': (context) => const Onboard(),
+        '/onboard/signin': (context) => const SignIn(),
+        '/onboard/signup': (context) => const SignUp(),
         '/home': (context) => const Home(),
       },
     );

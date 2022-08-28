@@ -1,17 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/signup/components/default_textfield.dart';
-import 'package:flutter/material.dart';
 
-class CenterTextFields extends StatelessWidget {
-  final _userController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController1 = TextEditingController();
-  final _passwordController2 = TextEditingController();
-  
-  CenterTextFields({
+class SignupCTF extends StatelessWidget {
+  const SignupCTF({
     super.key,
-  });
+    required TextEditingController userController,
+    required TextEditingController emailController,
+    required TextEditingController passwordController1,
+    required TextEditingController passwordController2,
+  }) : _userController = userController, _emailController = emailController, _passwordController1 = passwordController1, _passwordController2 = passwordController2;
 
+  final TextEditingController _userController;
+  final TextEditingController _emailController;
+  final TextEditingController _passwordController1;
+  final TextEditingController _passwordController2;
+  
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -30,7 +34,7 @@ class CenterTextFields extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
-            controller:_emailController,
+            controller: _emailController,
             hintText: 'Email Address',
             icon: Icons.email,
             keyboardType: TextInputType.emailAddress,

@@ -57,56 +57,18 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: [
               TopLogo(),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    DefaultTextField(
-                      controller: _emailController,
-                      hintText: 'Email Address',
-                      icon: Icons.email,
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: false,
-                    ),
-                    SizedBox(
-                      height: kFixPadding,
-                    ),
-                    DefaultTextField(
-                      controller: _passwordController,
-                      hintText: 'Password',
-                      icon: Icons.lock,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
-                    ),
-                    SizedBox(
-                      height: kFixPadding,
-                    ),
-                    ClearFullButton(
-                      whiteText: 'I forgot my ',
-                      colorText: 'Password',
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Forgot();
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              SigninCTF(emailController: _emailController, passwordController: _passwordController),
               BottomWidgets(
                 cfbText1: 'Sign Up',
                 cfbText2: 'Don\'t have an account? ',
                 btnText: 'Sign In',
                 onPressed1: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return SignUp();
-                    },
-                  ));
+                  // Navigator.push(context, MaterialPageRoute(
+                  //   builder: (context) {
+                  //     return SignUp();
+                  //   },
+                  //                  ));
+                  Navigator.of(context).pushReplacementNamed('/onboard/signup');
                 },
                 onPressed2: signIn,
               ),

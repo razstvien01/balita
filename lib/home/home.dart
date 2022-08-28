@@ -14,28 +14,24 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  //signout function 
-  signOut() async {
-    
-    await auth.signOut();
-    // Navigator.pushReplacement(
-    //     context, MaterialPageRoute(builder: (context) => Onboard()));
-    // Navigator.of(context).pushReplacementNamed('/auth');
-    // auth.is
-  }
-  
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkColor,
-      body: Center(
-        child: DefaultButton(
-          btnText: 'Sign Out',
-          onPressed: signOut,
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '${user?.email}',
+            style: kHeadTextStyle,
+          ),
+          DefaultButton(
+            btnText: 'Sign Out',
+            onPressed: FirebaseAuth.instance.signOut,
+          ),
+        ],
       ),
     );
   }

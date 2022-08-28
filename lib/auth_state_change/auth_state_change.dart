@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/home/home.dart';
-import 'package:news_flight/intro/components/empty_appbar.dart';
-import 'package:news_flight/intro/components/intro_data.dart';
 import 'package:news_flight/intro/intro.dart';
 import 'package:news_flight/onboard/onboard.dart';
 

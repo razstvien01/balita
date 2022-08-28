@@ -1,24 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/forgot/forgot.dart';
 import 'package:news_flight/signup/components/clear_full_button.dart';
 import 'package:news_flight/signup/components/default_textfield.dart';
 
-class SignInCTF extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
-  
-  SignInCTF({
+class SigninCTF extends StatelessWidget {
+  const SigninCTF({
     super.key,
-  });
+    required TextEditingController emailController,
+    required TextEditingController passwordController,
+  }) : _emailController = emailController, _passwordController = passwordController;
+
+  final TextEditingController _emailController;
+  final TextEditingController _passwordController;
 
   @override
   Widget build(BuildContext context) {
