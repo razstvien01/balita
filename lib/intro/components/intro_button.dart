@@ -22,11 +22,14 @@ class IntroButton extends StatelessWidget {
             ? ClearDefaultButton(
                 name: 'Skip',
                 press: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return Onboard();
-                    }),
+                  Navigator.of(context).pushReplacementNamed(
+                    '/onboard'
                   );
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) {
+                  //     return Onboard();
+                  //   }),
+                  // );
                 },
               )
             : ClearDefaultButton(
@@ -51,10 +54,13 @@ class IntroButton extends StatelessWidget {
             ? ClearDefaultButton(
                 name: 'Done',
                 press: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return Onboard();
-                    }),
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) {
+                  //     return Onboard();
+                  //   }),
+                  // );
+                  Navigator.of(context).pushReplacementNamed(
+                    '/onboard'
                   );
                 },
               )

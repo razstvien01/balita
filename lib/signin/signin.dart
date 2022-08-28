@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:news_flight/auth_state_change/auth_state_change.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/forgot/forgot.dart';
 import 'package:news_flight/home/home.dart';
@@ -24,26 +25,26 @@ class _SignInState extends State<SignIn> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    print('sign in pressed');
-    print(_emailController.text.trim());
-    print(_passwordController.text.trim());
-    
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-    
-    // Navigator.of(context).popUntil(sett
-    // });
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      
+      //* IMPORTANTE NI IF MAG LOG IN
+      Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
+      
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
   }
-  
+
   @override
-  void dispose(){
+  void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
-  
 
   @override
   Widget build(BuildContext context) {

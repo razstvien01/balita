@@ -5,6 +5,7 @@ import 'package:news_flight/home/home.dart';
 import 'package:news_flight/intro/components/empty_appbar.dart';
 import 'package:news_flight/intro/components/intro_data.dart';
 import 'package:news_flight/intro/intro.dart';
+import 'package:news_flight/onboard/onboard.dart';
 
 class AuthStateChange extends StatefulWidget {
   const AuthStateChange({super.key});
@@ -28,8 +29,9 @@ class _AuthStateChangeState extends State<AuthStateChange> {
           } else if (snapshot.hasData) {
             return Home();
           } else {
-            // Navigator.pushAndRemoveUntil('');
+            // return toIntro();
             return Intro();
+            // return;
           }
         },
       );
