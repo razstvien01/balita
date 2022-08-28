@@ -15,25 +15,30 @@ class AuthStateChange extends StatefulWidget {
 }
 
 class _AuthStateChangeState extends State<AuthStateChange> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong!'));
-          } else if (snapshot.hasData) {
-            return Home();
-          } else {
-            // return toIntro();
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Something went wrong!'));
+        } else if (snapshot.hasData) {
+          return Home();
+        } else {
+          if(!introShowOnce){
+            introShowOnce = !introShowOnce;
             return Intro();
-            // return;
           }
-        },
-      );
+          else {
+            return Onboard();
+          }
+        }
+      },
+    );
   }
 }

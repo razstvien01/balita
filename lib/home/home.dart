@@ -18,10 +18,12 @@ class _HomeState extends State<Home> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   //signout function 
   signOut() async {
+    
     await auth.signOut();
     // Navigator.pushReplacement(
-    //     context, MaterialPageRoute(builder: (context) => AuthStateChange()));
-    Navigator.of(context).popAndPushNamed('/auth');
+    //     context, MaterialPageRoute(builder: (context) => Onboard()));
+    // Navigator.of(context).pushReplacementNamed('/auth');
+    // auth.is
   }
   
 

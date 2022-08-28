@@ -78,3 +78,5 @@ List<Map<String, String>> introData = [
     'descText': "afjfoiewgjewgojbn ospgjg m opignb oin oigns  osgns",
   },
 ];
+
+bool introShowOnce = false;
