@@ -24,6 +24,8 @@ class _SignUpState extends State<SignUp> {
   final _passwordController1 = TextEditingController();
   final _passwordController2 = TextEditingController();
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     _userController.dispose();
@@ -34,7 +36,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Future signUp() async {
-    
+    formKey.currentState!.validate();
     if (_passwordController1.text.trim() == _passwordController2.text.trim()) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
@@ -52,16 +54,25 @@ class _SignUpState extends State<SignUp> {
       appBar: EmptyAppBar(),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height * 1.268,
           child: Column(
             children: [
               TopLogo(),
               // CenterTextFields(),
-              SignupCTF(
-                  userController: _userController,
-                  emailController: _emailController,
-                  passwordController1: _passwordController1,
-                  passwordController2: _passwordController2),
+              // SignupCTF(
+              //   formKey: formKey,
+              //   userController: _userController,
+              //   emailController: _emailController,
+              //   passwordController1: _passwordController1,
+              //   passwordController2: _passwordController2,
+              // ),
+              SignUpCTF(
+                formKey: formKey,
+                userController: _userController,
+                emailController: _emailController,
+                passwordController1: _passwordController1,
+                passwordController2: _passwordController2,
+              ),
               BottomWidgets(
                 btnText: 'Sign Up',
                 cfbText1: 'Sign In',

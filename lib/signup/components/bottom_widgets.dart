@@ -22,7 +22,7 @@ class BottomWidgets extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ClearFullButton(
             colorText: cfbText1,

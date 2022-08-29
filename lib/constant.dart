@@ -53,10 +53,7 @@ const kTitleTextStyle = TextStyle(
   color: kPrimaryColor,
 );
 
-const kLightTextStyle = TextStyle(
-  fontSize: 20.0,
-  color: kLightColor
-);
+const kLightTextStyle = TextStyle(fontSize: 20.0, color: kLightColor);
 
 //* Intro data map
 List<Map<String, String>> introData = [
@@ -69,8 +66,7 @@ List<Map<String, String>> introData = [
   {
     'image': trophy,
     'headText': 'Are you informed?',
-    'descText':
-        "selfgs m erhpkp honoi no[i[go[No ogn[okn ,mvngoib mcval'",
+    'descText': "selfgs m erhpkp honoi no[i[go[No ogn[okn ,mvngoib mcval'",
   },
   {
     'image': chat,
@@ -80,3 +76,22 @@ List<Map<String, String>> introData = [
 ];
 
 bool introShowOnce = false;
+
+String? emailValidator(String? value) {
+  if (value!.isEmpty ||
+      !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]-{2,4}').hasMatch(value)) {
+    return 'Enter correct email';
+  }
+  return null;
+}
+
+String? passwordValidator(String? value) {
+  if (!(value!.length > 5) && value.isNotEmpty) {
+    return "Should contain more than 5 characters";
+  }
+
+  if (value.isEmpty) {
+    return "Should not be empty";
+  }
+  return null;
+}

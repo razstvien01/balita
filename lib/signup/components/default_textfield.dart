@@ -28,12 +28,13 @@ class DefaultTextField extends StatelessWidget {
         color: kAccentColor,
       ),
       child: TextFormField(
-        // validator: validator,
+        validator: validator,
         controller: controller,
         cursorColor: kPrimaryColor,
         textInputAction: TextInputAction.next,
         keyboardType: keyboardType,
         decoration: InputDecoration(
+          errorStyle: TextStyle(color: Colors.orange),
           hintText: hintText,
           hintStyle: kSmallTextStyle,
           iconColor: kPrimaryColor,
