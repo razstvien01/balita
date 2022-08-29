@@ -5,6 +5,7 @@ class DefaultTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final TextEditingController controller;
+  final validator;
   final keyboardType, obscureText;
 
   const DefaultTextField({
@@ -14,6 +15,7 @@ class DefaultTextField extends StatelessWidget {
     required this.controller,
     required this.keyboardType,
     required this.obscureText,
+    required this.validator,
   });
 
   @override
@@ -25,7 +27,8 @@ class DefaultTextField extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(kShape)),
         color: kAccentColor,
       ),
-      child: TextField(
+      child: TextFormField(
+        // validator: validator,
         controller: controller,
         cursorColor: kPrimaryColor,
         textInputAction: TextInputAction.next,

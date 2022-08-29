@@ -47,6 +47,7 @@ class _ForgotState extends State<Forgot> {
                       height: kDefaultPadding,
                     ),
                     DefaultTextField(
+                      validator: Null,
                       controller: _emailController,
                       hintText: 'Email Address',
                       icon: Icons.email,

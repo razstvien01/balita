@@ -24,6 +24,7 @@ class SignupCTF extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DefaultTextField(
+            validator: Null,
             controller: _userController,
             hintText: 'Username',
             icon: Icons.person,
@@ -34,6 +35,7 @@ class SignupCTF extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            validator: Null,
             controller: _emailController,
             hintText: 'Email Address',
             icon: Icons.email,
@@ -44,6 +46,7 @@ class SignupCTF extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            validator: Null,
             controller: _passwordController1,
             hintText: 'Password',
             icon: Icons.lock,
@@ -54,6 +57,7 @@ class SignupCTF extends StatelessWidget {
             height: kDefaultPadding,
           ),
           DefaultTextField(
+            validator: Null,
             controller: _passwordController2,
             hintText: 'Confirm Password',
             icon: Icons.lock,

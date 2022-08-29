@@ -34,6 +34,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Future signUp() async {
+    
     if (_passwordController1.text.trim() == _passwordController2.text.trim()) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),

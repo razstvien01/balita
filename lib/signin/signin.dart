@@ -21,19 +21,20 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   Future signIn() async {
+    formKey.currentState!.validate();
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      
+
       //* IMPORTANTE NI IF MAG LOG IN
       Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
-      
     } on FirebaseAuthException catch (e) {
       print(e);
     }
@@ -44,6 +45,21 @@ class _SignInState extends State<SignIn> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  String? emailValidator(String? value) {
+    if (value!.isEmpty ||
+        !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]-{2,4}').hasMatch(value)) {
+      return 'Enter correct email';
+    }
+    return null;
+  }
+
+  String? validatePassword(value) {
+    if (!(value.length > 5) && value.isNotEmpty) {
+      return "Password should contain more than 5 characters";
+    }
+    return null;
   }
 
   @override
@@ -57,7 +73,89 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: [
               TopLogo(),
-              SigninCTF(emailController: _emailController, passwordController: _passwordController),
+              // SigninCTF(emailController: _emailController, passwordController: _passwordController),
+              Expanded(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // DefaultTextField(
+                      //   validator: emailValidator,
+                      //   controller: _emailController,
+                      //   hintText: 'Email Address',
+                      //   icon: Icons.email,
+                      //   keyboardType: TextInputType.emailAddress,
+                      //   obscureText: false,
+                      // ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(kShape)),
+                          color: kAccentColor,
+                        ),
+                        child: TextFormField(
+                          validator: emailValidator,
+                          // validator: (value) {
+                          //   if (value!.isEmpty ||
+                          //       !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]-{2,4}')
+                          //           .hasMatch(value)) {
+                          //     return 'Enter correct email';
+                          //   }
+                          //   return null;
+                          // },
+                          controller: _emailController,
+                          cursorColor: kPrimaryColor,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: 'Email Address',
+                            hintStyle: kSmallTextStyle,
+                            iconColor: kPrimaryColor,
+                            fillColor: kAccentColor,
+                            icon: Icon(
+                              Icons.email,
+                            ),
+                          ),
+                          style: kSmallTextStyle,
+                          obscureText: false,
+                        ),
+                      ),
+                      SizedBox(
+                        height: kFixPadding,
+                      ),
+                      DefaultTextField(
+                        validator: validatePassword,
+                        controller: _passwordController,
+                        hintText: 'Password',
+                        icon: Icons.lock,
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
+                      ),
+                      SizedBox(
+                        height: kFixPadding,
+                      ),
+                      ClearFullButton(
+                        whiteText: 'I forgot my ',
+                        colorText: 'Password',
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Forgot();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               BottomWidgets(
                 cfbText1: 'Sign Up',
                 cfbText2: 'Don\'t have an account? ',
@@ -68,6 +166,7 @@ class _SignInState extends State<SignIn> {
                   //     return SignUp();
                   //   },
                   //                  ));
+                  
                   Navigator.of(context).pushReplacementNamed('/onboard/signup');
                 },
                 onPressed2: signIn,

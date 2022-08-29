@@ -16,45 +16,48 @@ class SigninCTF extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          DefaultTextField(
-            controller: _emailController,
-            hintText: 'Email Address',
-            icon: Icons.email,
-            keyboardType: TextInputType.emailAddress,
-            obscureText: false,
-          ),
-          SizedBox(
-            height: kFixPadding,
-          ),
-          DefaultTextField(
-            controller: _passwordController,
-            hintText: 'Password',
-            icon: Icons.lock,
-            keyboardType: TextInputType.visiblePassword,
-            obscureText: true,
-          ),
-          SizedBox(
-            height: kFixPadding,
-          ),
-          ClearFullButton(
-            whiteText: 'I forgot my ',
-            colorText: 'Password',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return Forgot();
-                  },
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    return Scaffold();
+    // return Expanded(
+    //   child: Form(
+    //     child: Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         DefaultTextField(
+    //           controller: _emailController,
+    //           hintText: 'Email Address',
+    //           icon: Icons.email,
+    //           keyboardType: TextInputType.emailAddress,
+    //           obscureText: false,
+    //         ),
+    //         SizedBox(
+    //           height: kFixPadding,
+    //         ),
+    //         DefaultTextField(
+    //           controller: _passwordController,
+    //           hintText: 'Password',
+    //           icon: Icons.lock,
+    //           keyboardType: TextInputType.visiblePassword,
+    //           obscureText: true,
+    //         ),
+    //         SizedBox(
+    //           height: kFixPadding,
+    //         ),
+    //         ClearFullButton(
+    //           whiteText: 'I forgot my ',
+    //           colorText: 'Password',
+    //           onPressed: () {
+    //             Navigator.of(context).push(
+    //               MaterialPageRoute(
+    //                 builder: (context) {
+    //                   return Forgot();
+    //                 },
+    //               ),
+    //             );
+    //           },
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
