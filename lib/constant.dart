@@ -78,11 +78,13 @@ List<Map<String, String>> introData = [
 bool introShowOnce = false;
 
 String? emailValidator(String? value) {
-  if (value!.isEmpty ||
-      !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]-{2,4}').hasMatch(value)) {
-    return 'Enter correct email';
+  if (value!.isEmpty) {
+    return 'Must be filled';
   }
-  return null;
+  if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+    return null;
+  }
+  return 'Enter correct email';
 }
 
 String? passwordValidator(String? value) {

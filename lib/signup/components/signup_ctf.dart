@@ -67,7 +67,7 @@ class SignUpCTF extends StatelessWidget {
               height: kDefaultPadding,
             ),
             DefaultTextField(
-              validator: passwordValidator,
+              validator: emailValidator,
               controller: _passwordController2,
               hintText: 'Confirm Password',
               icon: Icons.lock,

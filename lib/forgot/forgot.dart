@@ -16,7 +16,40 @@ class Forgot extends StatefulWidget {
 
 class _ForgotState extends State<Forgot> {
   final _emailController = TextEditingController();
-  
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: _emailController.text.trim(),
+      );
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Password reset link sent! Check your email.'),
+          );
+        },
+      );
+      // Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +80,7 @@ class _ForgotState extends State<Forgot> {
                       height: kDefaultPadding,
                     ),
                     DefaultTextField(
-                      validator: Null,
+                      validator: emailValidator,
                       controller: _emailController,
                       hintText: 'Email Address',
                       icon: Icons.email,
@@ -71,7 +104,7 @@ class _ForgotState extends State<Forgot> {
                     ),
                     DefaultButton(
                       btnText: 'Submit',
-                      onPressed: () {},
+                      onPressed: passwordReset,
                     ),
                   ],
                 ),
