@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/home/home.dart';
@@ -25,7 +26,6 @@ class _SignUpState extends State<SignUp> {
   final _passwordController2 = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     _userController.dispose();
@@ -42,9 +42,23 @@ class _SignUpState extends State<SignUp> {
         email: _emailController.text.trim(),
         password: _passwordController1.text.trim(),
       );
+
+      //* Add user detail
+      await addUserDetails(_userController.text.trim());
+      
       //* IMPORTANTE NI IF MAG LOG IN
       Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
     }
+  }
+
+  Future addUserDetails(String username) async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    
+    final docUser = FirebaseFirestore.instance.collection('users').doc(currentUser?.uid);
+    
+    await docUser.set({
+      'Username': username,
+    });
   }
 
   @override
@@ -58,14 +72,6 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             children: [
               TopLogo(),
-              // CenterTextFields(),
-              // SignupCTF(
-              //   formKey: formKey,
-              //   userController: _userController,
-              //   emailController: _emailController,
-              //   passwordController1: _passwordController1,
-              //   passwordController2: _passwordController2,
-              // ),
               SignUpCTF(
                 formKey: formKey,
                 userController: _userController,
@@ -78,20 +84,8 @@ class _SignUpState extends State<SignUp> {
                 cfbText1: 'Sign In',
                 cfbText2: 'Already have an account? ',
                 onPressed1: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //   builder: (context) {
-                  //     return SignIn();
-                  //   },
-                  // ));
                   Navigator.of(context).pushReplacementNamed('/onboard/signin');
                 },
-                // onPressed2: () {
-                //   Navigator.push(context, MaterialPageRoute(
-                //     builder: (context) {
-                //       return Home();
-                //     },
-                //   ));
-                // },
                 onPressed2: signUp,
               ),
             ],
