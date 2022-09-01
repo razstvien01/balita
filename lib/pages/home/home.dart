@@ -16,22 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 0;
   final user = FirebaseAuth.instance.currentUser;
-
-  List<Widget> widgetOptions() {
-    return [
-      const Home(),
-      const Bookmark(),
-      const Profile(),
-    ];
-  }
-  
-  final items = <Widget>[
-    Icon(Icons.home, size: 25),
-    Icon(Icons.bookmark, size: 25),
-    Icon(Icons.person, size: 25),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +24,6 @@ class _HomeState extends State<Home> {
       extendBody: true,
       backgroundColor: kDarkColor,
       appBar: EmptyAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '${user?.email}',
-            style: kHeadTextStyle,
-          ),
-          DefaultButton(
-            btnText: 'Sign Out',
-            onPressed: FirebaseAuth.instance.signOut,
-          ),
-        ],
-      ),
     );
   }
 }
