@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/home/home.dart';
-import 'package:news_flight/intro/components/empty_appbar.dart';
-import 'package:news_flight/onboard/components/top_logo.dart';
-import 'package:news_flight/signin/signin.dart';
-import 'package:news_flight/signup/components/bottom_widgets.dart';
+import 'package:news_flight/pages/home/home.dart';
+import 'package:news_flight/pages/intro/components/empty_appbar.dart';
+import 'package:news_flight/pages/onboard/components/top_logo.dart';
+import 'package:news_flight/pages/signin/signin.dart';
+import 'package:news_flight/pages/signup/components/bottom_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:news_flight/signup/components/signup_ctf.dart';
+import 'package:news_flight/pages/signup/components/signup_ctf.dart';
 
 import 'components/default_textfield.dart';
 

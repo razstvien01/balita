@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:news_flight/auth_state_change/auth_state_change.dart';
+import 'package:news_flight/services/auth.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/firebase_options.dart';
-import 'package:news_flight/home/home.dart';
-import 'package:news_flight/intro/intro.dart';
+import 'package:news_flight/pages/home/home.dart';
+import 'package:news_flight/pages/intro/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:news_flight/onboard/onboard.dart';
-import 'package:news_flight/signin/signin.dart';
-import 'package:news_flight/signup/signup.dart';
+import 'package:news_flight/pages/onboard/onboard.dart';
+import 'package:news_flight/pages/signin/signin.dart';
+import 'package:news_flight/pages/signup/signup.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

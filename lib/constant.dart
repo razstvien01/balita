@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'signup/components/default_textfield.dart';
+import 'package:news_flight/pages/home/home.dart';
 
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);
@@ -55,8 +54,10 @@ const kTitleTextStyle = TextStyle(
 
 const kLightTextStyle = TextStyle(fontSize: 20.0, color: kLightColor);
 
+bool introShowOnce = false;
+
 //* Intro data map
-List<Map<String, String>> introData = [
+const List<Map<String, String>> introData = [
   {
     'image': newspaper,
     'headText': 'Your daily newspaper',
@@ -74,8 +75,6 @@ List<Map<String, String>> introData = [
     'descText': "afjfoiewgjewgojbn ospgjg m opignb oin oigns  osgns",
   },
 ];
-
-bool introShowOnce = false;
 
 String? emailValidator(String? value) {
   if (value!.isEmpty) {

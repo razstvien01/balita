@@ -1,18 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/home/home.dart';
-import 'package:news_flight/intro/intro.dart';
-import 'package:news_flight/onboard/onboard.dart';
+import 'package:news_flight/pages/home/home.dart';
+import 'package:news_flight/pages/intro/intro.dart';
+import 'package:news_flight/pages/onboard/onboard.dart';
+import 'package:news_flight/widgets/navbar/navbar.dart';
 
 class AuthStateChange extends StatefulWidget {
   const AuthStateChange({super.key});
 
   @override
-  State<AuthStateChange> createState() => _AuthStateChangeState();
+  State<AuthStateChange> createState() => _Auth();
 }
 
-class _AuthStateChangeState extends State<AuthStateChange> {
+class _Auth extends State<AuthStateChange> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _AuthStateChangeState extends State<AuthStateChange> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Something went wrong!'));
         } else if (snapshot.hasData) {
-          return Home();
+          return NavBar();
         } else {
           if(!introShowOnce){
             introShowOnce = !introShowOnce;

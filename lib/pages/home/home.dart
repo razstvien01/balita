@@ -1,10 +1,12 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:news_flight/auth_state_change/auth_state_change.dart';
+import 'package:flutter/gestures.dart';
+import 'package:news_flight/pages/bookmark/bookmark.dart';
+import 'package:news_flight/pages/intro/components/empty_appbar.dart';
+import 'package:news_flight/pages/profile/profile.dart';
 import 'package:news_flight/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:news_flight/onboard/onboard.dart';
-import 'package:news_flight/signup/components/default_button.dart';
+import 'package:news_flight/pages/signup/components/default_button.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,12 +16,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int index = 0;
   final user = FirebaseAuth.instance.currentUser;
+
+  List<Widget> widgetOptions() {
+    return [
+      const Home(),
+      const Bookmark(),
+      const Profile(),
+    ];
+  }
+  
+  final items = <Widget>[
+    Icon(Icons.home, size: 25),
+    Icon(Icons.bookmark, size: 25),
+    Icon(Icons.person, size: 25),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: kDarkColor,
+      appBar: EmptyAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

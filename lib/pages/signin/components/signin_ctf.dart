@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/forgot/forgot.dart';
-import 'package:news_flight/signup/components/bottom_widgets.dart';
-import 'package:news_flight/signup/components/clear_full_button.dart';
-import 'package:news_flight/signup/components/default_textfield.dart';
+import 'package:news_flight/pages/forgot/forgot.dart';
+import 'package:news_flight/pages/signup/components/bottom_widgets.dart';
+import 'package:news_flight/pages/signup/components/clear_full_button.dart';
+import 'package:news_flight/pages/signup/components/default_textfield.dart';
 
 class SignInCTF extends StatelessWidget {
   const SignInCTF({

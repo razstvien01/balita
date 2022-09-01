@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/intro/components/empty_appbar.dart';
-import 'package:news_flight/onboard/components/top_logo.dart';
-import 'package:news_flight/signup/components/clear_full_button.dart';
-import 'package:news_flight/signup/components/default_button.dart';
-import 'package:news_flight/signup/components/default_textfield.dart';
+import 'package:news_flight/pages/intro/components/empty_appbar.dart';
+import 'package:news_flight/pages/onboard/components/top_logo.dart';
+import 'package:news_flight/pages/signup/components/clear_full_button.dart';
+import 'package:news_flight/pages/signup/components/default_button.dart';
+import 'package:news_flight/pages/signup/components/default_textfield.dart';
 import 'package:flutter/material.dart';
 
 class Forgot extends StatefulWidget {

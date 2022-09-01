@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/signup/components/default_textfield.dart';
+import 'package:news_flight/pages/signup/components/default_textfield.dart';
 
 class SignUpCTF extends StatelessWidget {
   const SignUpCTF({

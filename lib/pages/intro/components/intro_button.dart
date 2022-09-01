@@ -1,6 +1,6 @@
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/intro/components/clear_default_button.dart';
-import 'package:news_flight/onboard/onboard.dart';
+import 'package:news_flight/pages/intro/components/clear_default_button.dart';
+import 'package:news_flight/pages/onboard/onboard.dart';
 import 'package:flutter/material.dart';
 
 class IntroButton extends StatelessWidget {

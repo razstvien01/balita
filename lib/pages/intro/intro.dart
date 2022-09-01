@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/home/home.dart';
-import 'package:news_flight/intro/components/empty_appbar.dart';
-import 'package:news_flight/intro/components/intro_button.dart';
-import 'package:news_flight/intro/components/intro_data.dart';
+import 'package:news_flight/pages/home/home.dart';
+import 'package:news_flight/pages/intro/components/empty_appbar.dart';
+import 'package:news_flight/pages/intro/components/intro_button.dart';
+import 'package:news_flight/pages/intro/components/intro_data.dart';
 import 'package:flutter/material.dart';
 
 class Intro extends StatefulWidget {
