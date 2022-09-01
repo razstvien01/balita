@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_flight/pages/home/home.dart';
 
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);
@@ -52,7 +51,16 @@ const kTitleTextStyle = TextStyle(
   color: kPrimaryColor,
 );
 
-const kLightTextStyle = TextStyle(fontSize: 20.0, color: kLightColor);
+const kCategoryTextStyle = TextStyle(
+  fontSize: 32.0,
+  color: kPrimaryColor,
+  fontWeight: FontWeight.w500
+);
+
+const kLightTextStyle = TextStyle(
+  fontSize: 20.0,
+  color: kLightColor,
+);
 
 bool introShowOnce = false;
 
@@ -80,7 +88,9 @@ String? emailValidator(String? value) {
   if (value!.isEmpty) {
     return 'Must be filled';
   }
-  if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+  if (RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(value)) {
     return null;
   }
   return 'Enter correct email';
