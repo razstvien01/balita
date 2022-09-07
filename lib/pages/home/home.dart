@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:news_flight/model/catergory.dart';
-import 'package:news_flight/model/data.dart';
+import 'package:news_flight/services/data.dart';
 import 'package:news_flight/pages/bookmark/bookmark.dart';
 import 'package:news_flight/pages/home/components/category_title.dart';
 import 'package:news_flight/pages/intro/components/empty_appbar.dart';
@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
             itemCount: categories.length,
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return CategoryTile(
                 imageUrl: categories[index].imageUrl,

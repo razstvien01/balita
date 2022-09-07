@@ -12,14 +12,17 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 210,
-      alignment: Alignment.topLeft,
-      margin: const EdgeInsets.symmetric(horizontal: kLessPadding),
-      child: Stack(
-        children: [
-          Container(
-            child: ClipRRect(
+    return GestureDetector(
+      onTap: () {
+        
+      },
+      child: Container(
+        width: 210,
+        alignment: Alignment.topLeft,
+        margin: const EdgeInsets.symmetric(horizontal: kLessPadding),
+        child: Stack(
+          children: [
+            ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image.network(
                 imageUrl,
@@ -28,34 +31,34 @@ class CategoryTile extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 45),
-            alignment: Alignment.topCenter,
-            child: Text(categoryName, style: kCategoryTextStyle),
-          ),
-          
-          // Positioned(
-          //   top: 10,
-          //   right: 20,
-          //   child: Container(
-          //     height: 50,
-          //     width: 50,
-          //     child: IconButton(
-          //       onPressed: () {},
-          //       icon: Icon(
-          //         Icons.bookmark_add,
-          //         color: kPrimaryColor,
-          //       ),
-          //       iconSize: 30,
-          //     ),
-          //     decoration: BoxDecoration(
-          //       color: kAccentColor,
-          //       borderRadius: BorderRadius.circular(50),
-          //     ),
-          //   ),
-          // ),
-        ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 45),
+              alignment: Alignment.topCenter,
+              child: Text(categoryName, style: kCategoryTextStyle),
+            ),
+            
+            // Positioned(
+            //   top: 10,
+            //   right: 20,
+            //   child: Container(
+            //     height: 50,
+            //     width: 50,
+            //     child: IconButton(
+            //       onPressed: () {},
+            //       icon: Icon(
+            //         Icons.bookmark_add,
+            //         color: kPrimaryColor,
+            //       ),
+            //       iconSize: 30,
+            //     ),
+            //     decoration: BoxDecoration(
+            //       color: kAccentColor,
+            //       borderRadius: BorderRadius.circular(50),
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }
