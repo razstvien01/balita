@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_flight/constant.dart';
 
 class BlogTile extends StatelessWidget {
   final String imageUrl, title, desc;
@@ -13,14 +14,20 @@ class BlogTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: kDefaultPadding),
       child: Column(
         children: [
-          Image.network(imageUrl),
-          Text(
-            title,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(kDefaultRadius),
+            child: Image.network(imageUrl),
           ),
           Text(
             title,
+            style: kLightTextStyle,
+          ),
+          Text(
+            desc,
+            style: kSmallTextStyle,
           ),
         ],
       ),

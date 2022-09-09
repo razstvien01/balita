@@ -12,8 +12,10 @@ const kAppBarHeight = 56.0;
 
 //* Default round button radius
 const kRadius = 0.0;
+const kDefaultRadius = 20.0;
 
 //* Default padding
+const kBigPadding = 30.0;
 const kDefaultPadding = 20.0;
 const kLessPadding = 10.0;
 const kFixPadding = 16.0;
