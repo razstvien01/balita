@@ -31,6 +31,14 @@ class _SignInState extends State<SignIn> {
     } on FirebaseAuthException catch (e) {
       print(e);
       formKey.currentState!.validate();
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+          );
+        },
+      );
     }
   }
 

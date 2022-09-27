@@ -72,17 +72,17 @@ const List<Map<String, String>> introData = [
     'image': newspaper,
     'headText': 'Your daily newspaper',
     'descText':
-        "sfjisfoiwesfgjewgoewgosdgndsgogneog goiewogiewoig 0egjewogoiewg",
+        "Read reliable news everyday.",
   },
   {
     'image': trophy,
     'headText': 'Are you informed?',
-    'descText': "selfgs m erhpkp honoi no[i[go[No ogn[okn ,mvngoib mcval'",
+    'descText': "A lot of things are happening. Read now!",
   },
   {
     'image': chat,
     'headText': 'Be nice to each other.',
-    'descText': "afjfoiewgjewgojbn ospgjg m opignb oin oigns  osgns",
+    'descText': "Interact with different people and consider their thoughts",
   },
 ];
 
