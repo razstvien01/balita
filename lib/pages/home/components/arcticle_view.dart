@@ -22,16 +22,18 @@ class _ArticleViewState extends State<ArticleView> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: EmptyAppBar(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: WebView(
-          initialUrl: widget.blogUrl,
-          onWebViewCreated: (WebViewController webViewController){
-            _completer.complete(webViewController);
-          },
+    return SafeArea(
+      child: Scaffold(
+        // appBar: EmptyAppBar(),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          // width: MediaQuery.of(context).size.width,
+          child: WebView(
+            initialUrl: widget.blogUrl,
+            onWebViewCreated: (WebViewController webViewController){
+              _completer.complete(webViewController);
+            },
+          ),
         ),
       ),
     );

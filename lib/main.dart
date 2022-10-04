@@ -10,45 +10,41 @@ import 'package:news_flight/pages/onboard/onboard.dart';
 import 'package:news_flight/pages/signin/signin.dart';
 import 'package:news_flight/pages/signup/signup.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // await Firebase.initializeApp();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
-  
-  //* Setting statusbarcolor to kTransparent
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: kTransparent,
-    )
   );
+
+  //* Setting statusbarcolor to kTransparent
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: kTransparent,
+  ));
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'news_flight',
-      
+
       //* Removing the debug banner
       debugShowCheckedModeBanner: false,
-      
+
       //* Setting up themedata of the app
       theme: ThemeData(
         primaryColor: kPrimaryColor,
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary:  kDarkColor
-        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kDarkColor),
         highlightColor: kTransparent,
         fontFamily: 'Jaapokki',
       ),
       home: AuthStateChange(),
-      
+
       routes: {
         '/intro': (context) => const Intro(),
         '/auth': (context) => const AuthStateChange(),

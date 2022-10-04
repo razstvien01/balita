@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/pages/home/components/category_news.dart';
 
 class CategoryTile extends StatelessWidget {
   final String imageUrl, categoryName;
@@ -14,34 +15,40 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryNews(
+              category: categoryName,
+            ),
+          ),
+        );
+      },
       child: Container(
-        width: 210,
-        alignment: Alignment.topCenter,
-        margin: const EdgeInsets.symmetric(horizontal: kLessPadding),
-        child: Stack(
-          children: [
-            Container(
-              alignment: Alignment.topCenter,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(kDefaultRadius),
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  width: 200,
-                  height: 100,
-                  fit: BoxFit.cover,
+        margin: EdgeInsets.only(right: kLessPadding),
+        child: Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(kDefaultRadius),
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    width: 200,
+                    height: 90,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: kBigPadding),
-              alignment: Alignment.topCenter,
-              child: Text(
+              Text(
                 categoryName,
                 style: kCategoryTextStyle,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

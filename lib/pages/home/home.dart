@@ -55,54 +55,135 @@ class _HomeState extends State<Home> {
                 child: CircularProgressIndicator(),
               ),
             )
-          : Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    child: Container(
-                      // color: kAccentColor,
-                      padding: EdgeInsets.symmetric(horizontal: kLessPadding),
-                      alignment: Alignment.center,
-                      child: ListView.builder(
-                        itemCount: categories.length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        // physics: const BouncingScrollPhysics(),
-                        physics: ClampingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return CategoryTile(
-                            imageUrl: categories[index].imageUrl,
-                            categoryName: categories[index].categoryName,
-                          );
-                        },
-                      ),
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: categories.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      // physics: const BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return CategoryTile(
+                          imageUrl: categories[index].imageUrl,
+                          categoryName: categories[index].categoryName,
+                        );
+                      },
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: Container(
-                      child: ListView.builder(
-                        itemCount: articles.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: ((context, index) {
-                          return BlogTile(
-                            imageUrl: articles[index].urlToImage as String,
-                            title: articles[index].title as String,
-                            desc: articles[index].description as String,
-                            url: articles[index].url as String,
-                          );
-                        }),
-                      ),
-                    ),
+                  ListView.builder(
+                    itemCount: articles.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: ((context, index) {
+                      return BlogTile(
+                        imageUrl: articles[index].urlToImage as String,
+                        title: articles[index].title as String,
+                        desc: articles[index].description as String,
+                        url: articles[index].url as String,
+                      );
+                    }),
                   ),
-                ),
-              ],
+                ],
+              ),
+              // child: Column(
+              //   children: [
+              //     ListView.builder(
+              //       itemCount: categories.length,
+              //       scrollDirection: Axis.horizontal,
+              //       shrinkWrap: true,
+              //       // physics: const BouncingScrollPhysics(),
+              //       physics: ClampingScrollPhysics(),
+              //       itemBuilder: (context, index) {
+              //         return CategoryTile(
+              //           imageUrl: categories[index].imageUrl,
+              //           categoryName: categories[index].categoryName,
+              //         );
+              //       },
+              //     ),
+
+              //     ListView.builder(
+              //       itemCount: articles.length,
+              //       shrinkWrap: true,
+              //       scrollDirection: Axis.vertical,
+              //       physics: const NeverScrollableScrollPhysics(),
+              //       itemBuilder: ((context, index) {
+              //         return BlogTile(
+              //           imageUrl: articles[index].urlToImage as String,
+              //           title: articles[index].title as String,
+              //           desc: articles[index].description as String,
+              //           url: articles[index].url as String,
+              //         );
+              //       }),
+              //     ),
+              //   ],
+              // ),
+              // body: ,
+              // child: Column(
+              //   children: [
+              //     Flexible(
+              //       child: ListView.builder(
+              //         itemCount: articles.length,
+              //         shrinkWrap: true,
+              //         scrollDirection: Axis.vertical,
+              //         physics: const NeverScrollableScrollPhysics(),
+              //         itemBuilder: ((context, index) {
+              //           return BlogTile(
+              //             imageUrl: articles[index].urlToImage as String,
+              //             title: articles[index].title as String,
+              //             desc: articles[index].description as String,
+              //             url: articles[index].url as String,
+              //           );
+              //         }),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // child: Column(
+              //   mainAxisSize: MainAxisSize.min,
+              //   children: [
+              //     SizedBox(
+              //       child: Container(
+              //         // color: kAccentColor,
+              //         padding: EdgeInsets.symmetric(horizontal: kLessPadding),
+              //         alignment: Alignment.center,
+              //         child: ListView.builder(
+              //           itemCount: categories.length,
+              //           scrollDirection: Axis.horizontal,
+              //           shrinkWrap: true,
+              //           // physics: const BouncingScrollPhysics(),
+              //           physics: ClampingScrollPhysics(),
+              //           itemBuilder: (context, index) {
+              //             return CategoryTile(
+              //               imageUrl: categories[index].imageUrl,
+              //               categoryName: categories[index].categoryName,
+              //             );
+              //           },
+              //         ),
+              //       ),
+              //     ),
+              //     Flexible(
+              //       child: ListView.builder(
+              //         itemCount: articles.length,
+              //         shrinkWrap: true,
+              //         scrollDirection: Axis.vertical,
+              //         physics: const BouncingScrollPhysics(),
+              //         itemBuilder: ((context, index) {
+              //           return BlogTile(
+              //             imageUrl: articles[index].urlToImage as String,
+              //             title: articles[index].title as String,
+              //             desc: articles[index].description as String,
+              //             url: articles[index].url as String,
+              //           );
+              //         }),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ),
       // : SingleChildScrollView(
       //   // height: MediaQuery.of(context).size.height,

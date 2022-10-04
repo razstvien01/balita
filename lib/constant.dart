@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+String countryCode = 'ph';
+
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);
 const kLightColor = Color(0xFF01B0D3);
@@ -15,6 +17,7 @@ const kRadius = 0.0;
 const kDefaultRadius = 20.0;
 
 //* Default padding
+const kCatPadding = 45.0;
 const kBigPadding = 30.0;
 const kDefaultPadding = 20.0;
 const kLessPadding = 10.0;

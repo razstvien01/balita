@@ -35,7 +35,7 @@ class _NavBarState extends State<NavBar> {
 
   //List of the pages titles
   List<String> titleList = [
-    'Home',
+    'General',
     'Bookmark',
     'Profile',
   ];

@@ -1,15 +1,14 @@
-import 'dart:convert';
-import 'package:news_flight/constant.dart';
 import 'package:news_flight/model/article.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class News {
+class GetCategoryNews {
   List<ArticleModel> news = [];
   String countryCode = 'ph';
 
-  Future<void> getNews() async {
-    Uri url = Uri.parse("https://newsapi.org/v2/top-headlines?country=${countryCode}&category=&apiKey=780c7b6a7e924552a16df98fafd48718");
-    
+  Future<void> getNews(String category) async {
+    Uri url = Uri.parse("https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=780c7b6a7e924552a16df98fafd48718");
+
     var response = await http.get(url);
 
     Map jsonData = jsonDecode(response.body);
