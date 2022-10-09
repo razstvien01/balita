@@ -5,6 +5,7 @@ class ArticleModel{
   String? url;
   String? urlToImage;
   String? content;
+  bool? bookmark;
   // String publishedAt;
   
   ArticleModel({
@@ -14,6 +15,7 @@ class ArticleModel{
     required this.url,
     required this.urlToImage,
     required this.content,
+    required this.bookmark,
     // required this.publishedAt,
   });
 }

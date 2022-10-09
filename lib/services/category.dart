@@ -24,6 +24,7 @@ class GetCategoryNews {
             urlToImage: element['urlToImage'],
             // publishedAt: element['publishedAt'],
             content: element['context'],
+            bookmark: false,
           );
           
           news.add(articleModel);

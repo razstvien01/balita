@@ -28,26 +28,45 @@ class BlogTile extends StatelessWidget {
           margin: EdgeInsets.only(bottom: kDefaultPadding),
           child: Column(
             children: [
-              Positioned(
-                top: 10,
-                right: 20,
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  child: IconButton(
-                    onPressed: () {
-                      
-                    },
-                    icon: Icon(
-                      Icons.bookmark,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
-              ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(kDefaultRadius),
-                child: Image.network(imageUrl),
+                child: Stack(
+                  children: [
+                    Image.network(imageUrl),
+                    Positioned(
+                      top: 10,
+                      right: 5,
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.bookmark,
+                            color: kPrimaryColor,
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      left: 5,
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.comment,
+                            color: kPrimaryColor,
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Text(
                 title,

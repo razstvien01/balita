@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -39,6 +40,13 @@ class _HomeState extends State<Home> {
     News news = News();
     await news.getNews();
     articles = news.news;
+    
+    // final docUser = FirebaseFirestore.instance.collection('articles').doc('categories');
+    
+    // await docUser.set({
+    //   'general': 'dsdssddsds',
+    // });
+    
     setState(() {
       _loading = false;
     });
@@ -56,6 +64,7 @@ class _HomeState extends State<Home> {
               ),
             )
           : SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   SizedBox(
@@ -90,148 +99,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              // child: Column(
-              //   children: [
-              //     ListView.builder(
-              //       itemCount: categories.length,
-              //       scrollDirection: Axis.horizontal,
-              //       shrinkWrap: true,
-              //       // physics: const BouncingScrollPhysics(),
-              //       physics: ClampingScrollPhysics(),
-              //       itemBuilder: (context, index) {
-              //         return CategoryTile(
-              //           imageUrl: categories[index].imageUrl,
-              //           categoryName: categories[index].categoryName,
-              //         );
-              //       },
-              //     ),
-
-              //     ListView.builder(
-              //       itemCount: articles.length,
-              //       shrinkWrap: true,
-              //       scrollDirection: Axis.vertical,
-              //       physics: const NeverScrollableScrollPhysics(),
-              //       itemBuilder: ((context, index) {
-              //         return BlogTile(
-              //           imageUrl: articles[index].urlToImage as String,
-              //           title: articles[index].title as String,
-              //           desc: articles[index].description as String,
-              //           url: articles[index].url as String,
-              //         );
-              //       }),
-              //     ),
-              //   ],
-              // ),
-              // body: ,
-              // child: Column(
-              //   children: [
-              //     Flexible(
-              //       child: ListView.builder(
-              //         itemCount: articles.length,
-              //         shrinkWrap: true,
-              //         scrollDirection: Axis.vertical,
-              //         physics: const NeverScrollableScrollPhysics(),
-              //         itemBuilder: ((context, index) {
-              //           return BlogTile(
-              //             imageUrl: articles[index].urlToImage as String,
-              //             title: articles[index].title as String,
-              //             desc: articles[index].description as String,
-              //             url: articles[index].url as String,
-              //           );
-              //         }),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // child: Column(
-              //   mainAxisSize: MainAxisSize.min,
-              //   children: [
-              //     SizedBox(
-              //       child: Container(
-              //         // color: kAccentColor,
-              //         padding: EdgeInsets.symmetric(horizontal: kLessPadding),
-              //         alignment: Alignment.center,
-              //         child: ListView.builder(
-              //           itemCount: categories.length,
-              //           scrollDirection: Axis.horizontal,
-              //           shrinkWrap: true,
-              //           // physics: const BouncingScrollPhysics(),
-              //           physics: ClampingScrollPhysics(),
-              //           itemBuilder: (context, index) {
-              //             return CategoryTile(
-              //               imageUrl: categories[index].imageUrl,
-              //               categoryName: categories[index].categoryName,
-              //             );
-              //           },
-              //         ),
-              //       ),
-              //     ),
-              //     Flexible(
-              //       child: ListView.builder(
-              //         itemCount: articles.length,
-              //         shrinkWrap: true,
-              //         scrollDirection: Axis.vertical,
-              //         physics: const BouncingScrollPhysics(),
-              //         itemBuilder: ((context, index) {
-              //           return BlogTile(
-              //             imageUrl: articles[index].urlToImage as String,
-              //             title: articles[index].title as String,
-              //             desc: articles[index].description as String,
-              //             url: articles[index].url as String,
-              //           );
-              //         }),
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ),
-      // : SingleChildScrollView(
-      //   // height: MediaQuery.of(context).size.height,
-
-      //   child: Expanded(
-      //     child: Container(
-      //       height: MediaQuery.of(context).size.height,
-      //       child: Column(
-      //           children: [
-      //             //* Categories
-      // Container(
-      //   padding: EdgeInsets.symmetric(horizontal: kLessPadding),
-      //   alignment: Alignment.topCenter,
-      //   child: ListView.builder(
-      //     itemCount: categories.length,
-      //     scrollDirection: Axis.horizontal,
-      //     shrinkWrap: true,
-      //     physics: const BouncingScrollPhysics(),
-      //     itemBuilder: (context, index) {
-      //       return CategoryTile(
-      //         imageUrl: categories[index].imageUrl,
-      //         categoryName: categories[index].categoryName,
-      //       );
-      //     },
-      //   ),
-      // ),
-
-      //             //* Blogs
-      //             Container(
-      //               child: ListView.builder(
-      //                 itemCount: articles.length,
-      //                 shrinkWrap: true,
-      //                 scrollDirection: Axis.vertical,
-      //                 physics: const BouncingScrollPhysics(),
-      //                 itemBuilder: ((context, index) {
-      //                   return BlogTile(
-      //                     imageUrl: articles[index].urlToImage as String,
-      //                     title: articles[index].title as String,
-      //                     desc: articles[index].description as String,
-      //                   );
-      //                 }),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
