@@ -23,14 +23,14 @@ class _NavBarState extends State<NavBar> {
   List<Widget> widgetOptions() {
     return (user?.email == "admin@gmail.com")
         ? [
-            const Home(),
-            Bookmark(articles: bm),
+            Home(articles: glbArticles),
+            Bookmark(bm: bm),
             const Profile(),
             const Accounts(),
           ]
         : [
-            const Home(),
-            Bookmark(articles: bm),
+            Home(articles: glbArticles),
+            Bookmark(bm: bm),
             const Profile(),
           ];
   }

@@ -16,7 +16,9 @@ import 'package:news_flight/pages/signup/components/default_button.dart';
 import 'package:news_flight/services/news.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  List<ArticleModel> articles;
+  
+  Home({super.key, required this.articles});
 
   @override
   State<Home> createState() => _HomeState();
@@ -25,7 +27,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance.currentUser;
   List<CategoryModel> categories = [];
-  List<ArticleModel> articles = [];
+  // List<ArticleModel> categories = [];
+  
 
   bool _loading = true;
 
@@ -34,12 +37,15 @@ class _HomeState extends State<Home> {
     super.initState();
     categories = getCategories();
     getNews();
+    
+    
   }
 
   void getNews() async {
     News news = News();
     await news.getNews();
-    articles = news.news;
+    widget.articles = news.news;
+    // glbArticles = news.news;
 
     // final docUser = FirebaseFirestore.instance.collection('articles').doc('categories');
 
@@ -48,8 +54,13 @@ class _HomeState extends State<Home> {
     // });
 
     setState(() {
+      
+    
+    // glbArticles = news.news;
       _loading = false;
     });
+    
+    
   }
 
   @override
@@ -91,18 +102,30 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       ListView.builder(
-                        itemCount: articles.length,
+                        itemCount: widget.articles.length,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: ((context, index) {
                           return BlogTile(
-                            imageUrl: articles[index].urlToImage as String,
-                            title: articles[index].title as String,
-                            desc: articles[index].description as String,
-                            url: articles[index].url as String,
+                            imageUrl: widget.articles[index].urlToImage as String,
+                            title: widget.articles[index].title as String,
+                            desc: widget.articles[index].description as String,
+                            url: widget.articles[index].url as String,
                             bm: bm,
-                            function: (){},
+                            function: () {
+                              // setState(() {
+                              //   if (bm[index].bookmark ==
+                              //       false) {
+                              //     glbArticles[index].bookmark = true;
+                              //   }
+                              //   else{
+                              //     glbArticles[index].bookmark = false;
+                              //   }
+                              // });
+                            },
+                            articles: widget.articles,
+                            index: index,
                           );
                         }),
                       ),

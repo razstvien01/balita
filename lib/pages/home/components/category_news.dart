@@ -73,6 +73,8 @@ class _CategoryNewsState extends State<CategoryNews> {
                       url: articles[index].url as String,
                       bm: bm,
                       function: (){},
+                      articles: articles,
+                      index: index,
                     );
                   }),
                 ),

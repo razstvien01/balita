@@ -9,8 +9,8 @@ import 'package:news_flight/model/article.dart';
 import 'package:news_flight/pages/home/components/blog_tile.dart';
 
 class Bookmark extends StatefulWidget {
-  final List<ArticleModel> articles;
-  const Bookmark({super.key, required this.articles});
+  final List<ArticleModel> bm;
+  const Bookmark({super.key, required this.bm});
 
   @override
   State<Bookmark> createState() => _BookmarkState();
@@ -103,22 +103,24 @@ class _BookmarkState extends State<Bookmark> {
               child: Column(
                 children: [
                   ListView.builder(
-                    itemCount: widget.articles.length,
+                    itemCount: widget.bm.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return BlogTile(
-                        imageUrl: widget.articles[index].urlToImage as String,
-                        title: widget.articles[index].title as String,
-                        desc: widget.articles[index].description as String,
-                        url: widget.articles[index].url as String,
-                        bm: widget.articles,
+                        imageUrl: widget.bm[index].urlToImage as String,
+                        title: widget.bm[index].title as String,
+                        desc: widget.bm[index].description as String,
+                        url: widget.bm[index].url as String,
+                        bm: widget.bm,
+                        articles: glbArticles,
                         function: (){
                           setState(() {
                             
                           });
                         },
+                        index: index,
                       );
                     },
                   ),

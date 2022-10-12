@@ -5,6 +5,7 @@ String countryCode = 'ph';
 Map<String, dynamic> userGlbData = {};
 Map<String, dynamic> bmArticles = {};
 List<ArticleModel> bm = [];
+List<ArticleModel> glbArticles = [];
 
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);
