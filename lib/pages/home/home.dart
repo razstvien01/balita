@@ -40,13 +40,13 @@ class _HomeState extends State<Home> {
     News news = News();
     await news.getNews();
     articles = news.news;
-    
+
     // final docUser = FirebaseFirestore.instance.collection('articles').doc('categories');
-    
+
     // await docUser.set({
     //   'general': 'dsdssddsds',
     // });
-    
+
     setState(() {
       _loading = false;
     });
@@ -57,49 +57,58 @@ class _HomeState extends State<Home> {
     return Scaffold(
       extendBody: true,
       backgroundColor: kDarkColor,
-      body: _loading
+      body: (_loading)
           ? Center(
               child: Container(
                 child: CircularProgressIndicator(),
               ),
             )
-          : SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 100,
-                    child: ListView.builder(
-                      itemCount: categories.length,
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      // physics: const BouncingScrollPhysics(),
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return CategoryTile(
-                          imageUrl: categories[index].imageUrl,
-                          categoryName: categories[index].categoryName,
-                        );
-                      },
-                    ),
+          : (!userGlbData['enable'])
+              ? Center(
+                  child: Text(
+                    'Account disabled',
+                    style: kTitleTextStyle,
                   ),
-                  ListView.builder(
-                    itemCount: articles.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: ((context, index) {
-                      return BlogTile(
-                        imageUrl: articles[index].urlToImage as String,
-                        title: articles[index].title as String,
-                        desc: articles[index].description as String,
-                        url: articles[index].url as String,
-                      );
-                    }),
+                )
+              : SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          itemCount: categories.length,
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          // physics: const BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return CategoryTile(
+                              imageUrl: categories[index].imageUrl,
+                              categoryName: categories[index].categoryName,
+                            );
+                          },
+                        ),
+                      ),
+                      ListView.builder(
+                        itemCount: articles.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: ((context, index) {
+                          return BlogTile(
+                            imageUrl: articles[index].urlToImage as String,
+                            title: articles[index].title as String,
+                            desc: articles[index].description as String,
+                            url: articles[index].url as String,
+                            bm: bm,
+                            function: (){},
+                          );
+                        }),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
     );
   }
 }

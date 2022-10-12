@@ -44,20 +44,23 @@ class _SignUpState extends State<SignUp> {
       );
 
       //* Add user detail
-      await addUserDetails(_userController.text.trim());
+      await addUserDetails(_userController.text.trim(), _emailController.text.trim());
       
       //* IMPORTANTE NI IF MAG LOG IN
       Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
     }
   }
 
-  Future addUserDetails(String username) async {
+  Future addUserDetails(String username, String email) async {
     final currentUser = FirebaseAuth.instance.currentUser;
     
     final docUser = FirebaseFirestore.instance.collection('users').doc(currentUser?.uid);
     
     await docUser.set({
-      'Username': username,
+      'username': username,
+      'email': email,
+      'enable': true,
+      'bookmark': {},
     });
   }
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:news_flight/model/article.dart';
 
 String countryCode = 'ph';
+Map<String, dynamic> userGlbData = {};
+Map<String, dynamic> bmArticles = {};
+List<ArticleModel> bm = [];
 
 //* Color constants
 const kPrimaryColor = Color(0xFFFFFFFF);

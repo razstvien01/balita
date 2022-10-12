@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/pages/accounts/accounts.dart';
 import 'package:news_flight/pages/bookmark/bookmark.dart';
 import 'package:news_flight/pages/home/home.dart';
 import 'package:news_flight/pages/intro/components/empty_appbar.dart';
@@ -20,24 +21,26 @@ class _NavBarState extends State<NavBar> {
   final user = FirebaseAuth.instance.currentUser;
 
   List<Widget> widgetOptions() {
-    return [
-      const Home(),
-      const Bookmark(),
-      const Profile(),
-    ];
+    return (user?.email == "admin@gmail.com")
+        ? [
+            const Home(),
+            Bookmark(articles: bm),
+            const Profile(),
+            const Accounts(),
+          ]
+        : [
+            const Home(),
+            Bookmark(articles: bm),
+            const Profile(),
+          ];
   }
-
-  final items = <Widget>[
-    Icon(Icons.home, size: 25),
-    Icon(Icons.bookmark, size: 25),
-    Icon(Icons.person, size: 25),
-  ];
 
   //List of the pages titles
   List<String> titleList = [
     'General',
     'Bookmark',
     'Profile',
+    'Manage Accounts'
   ];
 
   void onTap(int index) {
@@ -48,6 +51,19 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final items = (user?.email == "admin@gmail.com")
+        ? <Widget>[
+            Icon(Icons.home, size: 25),
+            Icon(Icons.bookmark, size: 25),
+            Icon(Icons.person, size: 25),
+            Icon(Icons.manage_accounts, size: 25)
+          ]
+        : <Widget>[
+            Icon(Icons.home, size: 25),
+            Icon(Icons.bookmark, size: 25),
+            Icon(Icons.person, size: 25),
+          ];
+
     return Scaffold(
       extendBody: true,
       backgroundColor: kDarkColor,

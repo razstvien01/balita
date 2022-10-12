@@ -1,9 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/model/article.dart';
 import 'package:news_flight/pages/home/components/arcticle_view.dart';
 
-class BlogTile extends StatelessWidget {
+class BlogTile extends StatefulWidget {
   final String imageUrl, title, desc, url;
+  final List<ArticleModel> bm;
+  final VoidCallback function;
 
   const BlogTile({
     super.key,
@@ -11,8 +17,15 @@ class BlogTile extends StatelessWidget {
     required this.title,
     required this.desc,
     required this.url,
+    required this.function,
+    required this.bm,
   });
 
+  @override
+  State<BlogTile> createState() => _BlogTileState();
+}
+
+class _BlogTileState extends State<BlogTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +33,7 @@ class BlogTile extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return ArticleView(
-              blogUrl: url,
+              blogUrl: widget.url,
             );
           }));
         },
@@ -32,7 +45,7 @@ class BlogTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(kDefaultRadius),
                 child: Stack(
                   children: [
-                    Image.network(imageUrl),
+                    Image.network(widget.imageUrl),
                     Positioned(
                       top: 10,
                       right: 5,
@@ -40,10 +53,46 @@ class BlogTile extends StatelessWidget {
                         height: 50,
                         width: 50,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final user = FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(
+                                    '${FirebaseAuth.instance.currentUser?.uid}');
+
+                            if (bmArticles[widget.title] == null) {
+                              ArticleModel articleModel = ArticleModel(
+                                title: widget.title,
+                                author: '',
+                                description: widget.desc,
+                                url: widget.url,
+                                urlToImage: widget.imageUrl,
+                                content: null,
+                                bookmark: false,
+                              );
+                              
+                              setState(() {
+                                bmArticles[widget.title] = articleModel;
+                                widget.bm.add(articleModel);
+                              });
+                            } else {
+                              setState(() {
+                                bmArticles[widget.title] = null;
+                                for (int i = 0; i < widget.bm.length; ++i) {
+                                  if (widget.bm[i].title == widget.title) {
+                                    widget.bm.remove(widget.bm[i]);
+                                  }
+                                }
+                              });
+                            }
+                            bm = widget.bm;
+
+                            widget.function();
+                          },
                           icon: Icon(
-                            Icons.bookmark,
-                            color: kPrimaryColor,
+                            (bmArticles[widget.title] == null)
+                                ? Icons.bookmark_add
+                                : Icons.bookmark_added,
+                            color: kLightColor,
                             size: 40,
                           ),
                         ),
@@ -59,7 +108,7 @@ class BlogTile extends StatelessWidget {
                           onPressed: () {},
                           icon: Icon(
                             Icons.comment,
-                            color: kPrimaryColor,
+                            color: kLightColor,
                             size: 40,
                           ),
                         ),
@@ -69,11 +118,11 @@ class BlogTile extends StatelessWidget {
                 ),
               ),
               Text(
-                title,
+                widget.title,
                 style: kLightTextStyle,
               ),
               Text(
-                desc,
+                widget.desc,
                 style: kSmallTextStyle,
               ),
             ],

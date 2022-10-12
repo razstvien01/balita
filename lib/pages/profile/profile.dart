@@ -19,8 +19,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -65,7 +63,9 @@ class _ProfileState extends State<Profile> {
             if (snapshot.hasData) {
               Map<String, dynamic> data =
                   snapshot.data!.data() as Map<String, dynamic>;
-
+                  
+                  userGlbData = data;
+                  bmArticles = data['bookmark'];
               // print(data['favorites']);
               // print(data['favorites'][0]);
 
@@ -121,7 +121,7 @@ class _ProfileState extends State<Profile> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          data['Username'],
+                          data['username'],
                           style: TextStyle(
                             letterSpacing: 1.0,
                             color: Colors.grey,
