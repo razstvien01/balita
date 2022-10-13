@@ -38,6 +38,8 @@ class News {
     }
     
     glbArticles = news;
+    
+    // FirebaseFirestore.instance.collection('articles')
   }
 
 }

@@ -3,6 +3,8 @@ import 'package:news_flight/model/article.dart';
 
 String countryCode = 'ph';
 Map<String, dynamic> userGlbData = {};
+
+//* user articles that has been bookmark
 Map<String, dynamic> bmArticles = {};
 List<ArticleModel> bm = [];
 List<ArticleModel> glbArticles = [];

@@ -31,21 +31,32 @@ class BlogTile extends StatefulWidget {
 
 class _BlogTileState extends State<BlogTile> {
   Icon togggleIcon() {
-    bool isAdded = false;
-    
-    for(int i = 0; i < widget.articles.length; ++i){
-      if(widget.articles[i].title == widget.title){
+    bool added = false;
+
+    for (int i = 0; i < widget.articles.length; ++i) {
+      if (widget.articles[i].title == widget.title) {
         bool temp = widget.articles[i].bookmark as bool;
-        isAdded = widget.articles[i].bookmark = !temp;
+        added = temp;
       }
     }
-    
-    
+
+    // for(int i = 0; i < glbArticles.length; ++i){
+    //   if(glbArticles[i].title == widget.title){
+    //     bool temp = glbArticles[i].bookmark as bool;
+    //     notAdded = glbArticles[i].bookmark = !temp;
+    //   }
+    // }
+
+    // print("PASSED");
+
+    // glbArticles = widget.articles;
+
+    // setState(() {
+
+    // });
     return Icon(
-      (!isAdded == false)
-          ? Icons.bookmark_add
-          : Icons.bookmark_added,
-      color: kLightColor,
+      (added == false) ? Icons.bookmark_add : Icons.bookmark_added,
+      color: Colors.amber,
       size: 40,
     );
   }
@@ -95,13 +106,23 @@ class _BlogTileState extends State<BlogTile> {
                               );
 
                               setState(() {
-                                bmArticles[widget.title] = articleModel;
+                                bmArticles[widget.title] = {
+                                  'author': '',
+                                  'description': widget.desc,
+                                  'url': widget.url,
+                                  'urlToImage': widget.imageUrl,
+                                  'content': null,
+                                  'bookmark': true,
+                                };
                                 widget.bm.add(articleModel);
                                 glbArticles[widget.index].bookmark = true;
                               });
                             } else {
                               setState(() {
-                                bmArticles[widget.title] = null;
+                                // bmArticles[widget.title] = null;
+
+                                bmArticles.remove(widget.title);
+
                                 for (int i = 0; i < widget.bm.length; ++i) {
                                   if (widget.bm[i].title == widget.title) {
                                     widget.bm.remove(widget.bm[i]);
@@ -113,19 +134,14 @@ class _BlogTileState extends State<BlogTile> {
                               });
                             }
                             bm = widget.bm;
-                            // widget.isBookmark = !widget.isBookmark;
 
-                            print(
-                                "Is bookark????? ${glbArticles[widget.index].bookmark}");
+                            user.update({
+                              'bookmark': bmArticles,
+                            });
+
+                            //* rebuild function.
                             widget.function();
                           },
-                          // icon: Icon(
-                          //   (glbArticles[widget.index].bookmark == false)
-                          //       ? Icons.bookmark_add
-                          //       : Icons.bookmark_added,
-                          //   color: kLightColor,
-                          //   size: 40,
-                          // ),
                           icon: togggleIcon(),
                         ),
                       ),
@@ -140,7 +156,7 @@ class _BlogTileState extends State<BlogTile> {
                           onPressed: () {},
                           icon: Icon(
                             Icons.comment,
-                            color: kLightColor,
+                            color: Colors.amber,
                             size: 40,
                           ),
                         ),

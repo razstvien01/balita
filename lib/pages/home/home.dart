@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
     setState(() {
       
     
-    // glbArticles = news.news;
+    glbArticles = news.news;
       _loading = false;
     });
     
