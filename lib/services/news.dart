@@ -39,6 +39,20 @@ class News {
     
     glbArticles = news;
     
+    // print(bmArticles);
+    
+    // glbArticles.forEach((element) {
+    //   if(element.)
+    // });
+    
+    bmArticles.keys.forEach((key) {
+      for(int i = 0; i < glbArticles.length; ++i){
+        if(glbArticles[i].title == key){
+          glbArticles[i].bookmark = true;
+        }
+      }
+    });
+    
     // FirebaseFirestore.instance.collection('articles')
   }
 

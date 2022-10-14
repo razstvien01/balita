@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/model/article.dart';
 import 'package:news_flight/pages/accounts/accounts.dart';
 import 'package:news_flight/pages/bookmark/bookmark.dart';
 import 'package:news_flight/pages/home/home.dart';
@@ -19,6 +20,27 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int index = 0;
   final user = FirebaseAuth.instance.currentUser;
+  
+  @override
+  void initState(){
+    // bmArticles.forEach((key, value) {
+    //   ArticleModel article = ArticleModel(
+    //     title: key,
+    //     author: value['author'],
+    //     bookmark: value['bookmark'],
+    //     content: value['content'],
+    //     description: value['description'], 
+    //     url: value['url'],
+    //     urlToImage: value['urlToImage'],
+    //   );
+      
+    //   bm.add(article);
+    // });
+    
+    // print("First");
+    // print(bm);
+    // print(bmArticles);
+  }
 
   List<Widget> widgetOptions() {
     return (user?.email == "admin@gmail.com")

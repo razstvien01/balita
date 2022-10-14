@@ -75,6 +75,7 @@ class _CategoryNewsState extends State<CategoryNews> {
                       function: (){},
                       articles: articles,
                       index: index,
+                      isBookmark: articles[index].bookmark as bool,
                     );
                   }),
                 ),

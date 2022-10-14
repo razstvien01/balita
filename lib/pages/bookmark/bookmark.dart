@@ -18,6 +18,11 @@ class Bookmark extends StatefulWidget {
 
 class _BookmarkState extends State<Bookmark> {
   @override
+  void initState() {
+    
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkColor,
@@ -42,12 +47,11 @@ class _BookmarkState extends State<Bookmark> {
                         url: widget.bm[index].url as String,
                         bm: widget.bm,
                         articles: glbArticles,
-                        function: (){
-                          setState(() {
-                            
-                          });
+                        function: () {
+                          setState(() {});
                         },
                         index: index,
+                        isBookmark: widget.bm[index].bookmark as bool,
                       );
                     },
                   ),

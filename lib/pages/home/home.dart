@@ -126,6 +126,7 @@ class _HomeState extends State<Home> {
                             },
                             articles: widget.articles,
                             index: index,
+                            isBookmark: widget.articles[index].bookmark as bool,
                           );
                         }),
                       ),

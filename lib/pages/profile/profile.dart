@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
+import 'package:news_flight/model/article.dart';
 import 'package:news_flight/pages/signup/components/default_button.dart';
 
 class Profile extends StatefulWidget {
@@ -13,6 +14,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final currUser = FirebaseAuth.instance.currentUser;
+  Map<String, dynamic> data = {};
   String userName = 'reign';
   int age = 22;
   String email = 'email@gmail.com';
@@ -61,13 +63,27 @@ class _ProfileState extends State<Profile> {
               .get(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              Map<String, dynamic> data =
-                  snapshot.data!.data() as Map<String, dynamic>;
-                  
-                  userGlbData = data;
-                  bmArticles = data['bookmark'];
-              // print(data['favorites']);
-              // print(data['favorites'][0]);
+              data = snapshot.data!.data() as Map<String, dynamic>;
+
+              userGlbData = data;
+              bmArticles = userGlbData['bookmark'];
+              bm = [];
+
+              bmArticles.forEach((key, value) {
+                ArticleModel article = ArticleModel(
+                  title: key,
+                  author: value['author'],
+                  bookmark: value['bookmark'],
+                  content: value['content'],
+                  description: value['description'],
+                  url: value['url'],
+                  urlToImage: value['urlToImage'],
+                );
+
+                bm.add(article);
+              });
+
+              print(bm);
 
               return Container(
                 padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),

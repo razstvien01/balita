@@ -11,7 +11,7 @@ class BlogTile extends StatefulWidget {
   final List<ArticleModel> articles;
   final VoidCallback function;
   final int index;
-  // late bool isBookmark = false;
+  bool isBookmark;
 
   BlogTile({
     super.key,
@@ -23,6 +23,7 @@ class BlogTile extends StatefulWidget {
     required this.bm,
     required this.articles,
     required this.index,
+    required this.isBookmark,
   });
 
   @override
@@ -31,14 +32,14 @@ class BlogTile extends StatefulWidget {
 
 class _BlogTileState extends State<BlogTile> {
   Icon togggleIcon() {
-    bool added = false;
+    // bool added = false;
 
-    for (int i = 0; i < widget.articles.length; ++i) {
-      if (widget.articles[i].title == widget.title) {
-        bool temp = widget.articles[i].bookmark as bool;
-        added = temp;
-      }
-    }
+    // for (int i = 0; i < widget.articles.length; ++i) {
+    //   if (widget.articles[i].title == widget.title) {
+    //     bool temp = widget.articles[i].bookmark as bool;
+    //     added = temp;
+    //   }
+    // }
 
     // for(int i = 0; i < glbArticles.length; ++i){
     //   if(glbArticles[i].title == widget.title){
@@ -54,8 +55,16 @@ class _BlogTileState extends State<BlogTile> {
     // setState(() {
 
     // });
+    // return Icon(
+    //   (added == false) ? Icons.bookmark_add : Icons.bookmark_added,
+    //   color: Colors.amber,
+    //   size: 40,
+    // );
+    
+    // print("RUUUUUUUUUUUUUUUUUUUUUUN");
+    
     return Icon(
-      (added == false) ? Icons.bookmark_add : Icons.bookmark_added,
+      (!widget.isBookmark) ? Icons.bookmark_add : Icons.bookmark_added,
       color: Colors.amber,
       size: 40,
     );
@@ -93,7 +102,7 @@ class _BlogTileState extends State<BlogTile> {
                                 .collection('users')
                                 .doc(
                                     '${FirebaseAuth.instance.currentUser?.uid}');
-
+                                    
                             if (bmArticles[widget.title] == null) {
                               ArticleModel articleModel = ArticleModel(
                                 title: widget.title,
@@ -106,6 +115,8 @@ class _BlogTileState extends State<BlogTile> {
                               );
 
                               setState(() {
+                                
+                                //* add news info to the firebase
                                 bmArticles[widget.title] = {
                                   'author': '',
                                   'description': widget.desc,
@@ -115,12 +126,15 @@ class _BlogTileState extends State<BlogTile> {
                                   'bookmark': true,
                                 };
                                 widget.bm.add(articleModel);
-                                glbArticles[widget.index].bookmark = true;
+                                widget.isBookmark = glbArticles[widget.index].bookmark = true;
                               });
                             } else {
                               setState(() {
                                 // bmArticles[widget.title] = null;
-
+                                
+                                widget.isBookmark = glbArticles[widget.index].bookmark = false;
+                                
+                                //* removing news article info from the database
                                 bmArticles.remove(widget.title);
 
                                 for (int i = 0; i < widget.bm.length; ++i) {
@@ -130,11 +144,11 @@ class _BlogTileState extends State<BlogTile> {
                                 }
 
                                 // widget.bm.remove(widget.bm[widget.index]);
-                                glbArticles[widget.index].bookmark = false;
                               });
                             }
                             bm = widget.bm;
-
+                            
+                            //* updating database
                             user.update({
                               'bookmark': bmArticles,
                             });
