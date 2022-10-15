@@ -17,6 +17,9 @@ class News {
     var response = await http.get(url);
 
     Map jsonData = jsonDecode(response.body);
+    
+    // allArticles = jsonData['status']['articles'] as Map<String, dynamic>;
+    
 
     if (jsonData['status'] == 'ok') {
       jsonData['articles'].forEach((element) {
@@ -32,10 +35,24 @@ class News {
             bookmark: false,
           );
           
+          allArticles[element['title']] = {
+            'author': element['author'],
+            'description': element['description'],
+            'url': element['url'],
+            'urlToImage': element['urlToImage'],
+            // publishedAt: element['publishedAt'],
+            'content': element['context'],
+            'bookmark': false,
+          };
+          
           news.add(articleModel);
         }
       });
     }
+    
+    
+    // allArticles.
+    
     
     glbArticles = news;
     
@@ -53,7 +70,10 @@ class News {
       }
     });
     
-    // FirebaseFirestore.instance.collection('articles')
+    FirebaseFirestore.instance.collection('articles').doc('categories').update({
+      'general': allArticles,
+      'total': allArticles.length,
+    });
   }
 
 }

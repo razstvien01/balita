@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/model/article.dart';
+import 'package:news_flight/pages/comment/comment.dart';
 import 'package:news_flight/pages/home/components/arcticle_view.dart';
 
 class BlogTile extends StatefulWidget {
@@ -60,9 +61,9 @@ class _BlogTileState extends State<BlogTile> {
     //   color: Colors.amber,
     //   size: 40,
     // );
-    
+
     // print("RUUUUUUUUUUUUUUUUUUUUUUN");
-    
+
     return Icon(
       (!widget.isBookmark) ? Icons.bookmark_add : Icons.bookmark_added,
       color: Colors.amber,
@@ -102,7 +103,7 @@ class _BlogTileState extends State<BlogTile> {
                                 .collection('users')
                                 .doc(
                                     '${FirebaseAuth.instance.currentUser?.uid}');
-                                    
+
                             if (bmArticles[widget.title] == null) {
                               ArticleModel articleModel = ArticleModel(
                                 title: widget.title,
@@ -115,7 +116,6 @@ class _BlogTileState extends State<BlogTile> {
                               );
 
                               setState(() {
-                                
                                 //* add news info to the firebase
                                 bmArticles[widget.title] = {
                                   'author': '',
@@ -126,14 +126,16 @@ class _BlogTileState extends State<BlogTile> {
                                   'bookmark': true,
                                 };
                                 widget.bm.add(articleModel);
-                                widget.isBookmark = glbArticles[widget.index].bookmark = true;
+                                widget.isBookmark =
+                                    glbArticles[widget.index].bookmark = true;
                               });
                             } else {
                               setState(() {
                                 // bmArticles[widget.title] = null;
-                                
-                                widget.isBookmark = glbArticles[widget.index].bookmark = false;
-                                
+
+                                widget.isBookmark =
+                                    glbArticles[widget.index].bookmark = false;
+
                                 //* removing news article info from the database
                                 bmArticles.remove(widget.title);
 
@@ -147,7 +149,7 @@ class _BlogTileState extends State<BlogTile> {
                               });
                             }
                             bm = widget.bm;
-                            
+
                             //* updating database
                             user.update({
                               'bookmark': bmArticles,
@@ -167,7 +169,14 @@ class _BlogTileState extends State<BlogTile> {
                         height: 50,
                         width: 50,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Comment(),
+                              ),
+                            );
+                          },
                           icon: Icon(
                             Icons.comment,
                             color: Colors.amber,

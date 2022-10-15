@@ -42,19 +42,6 @@ class _ProfileState extends State<Profile> {
           ],
         ),
         backgroundColor: kDarkColor,
-        // body: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Text(
-        //       '${user?.email}',
-        //       style: kHeadTextStyle,
-        //     ),
-        //     DefaultButton(
-        //       btnText: 'Sign Out',
-        //       onPressed: FirebaseAuth.instance.signOut,
-        //     ),
-        //   ],
-        // ),
 
         body: FutureBuilder<DocumentSnapshot?>(
           future: FirebaseFirestore.instance

@@ -6,6 +6,8 @@ Map<String, dynamic> userGlbData = {};
 
 //* user articles that has been bookmark
 Map<String, dynamic> bmArticles = {};
+Map<String, dynamic> allArticles = {};
+
 List<ArticleModel> bm = [];
 List<ArticleModel> glbArticles = [];
 
