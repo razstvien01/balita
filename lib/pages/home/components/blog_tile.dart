@@ -5,6 +5,7 @@ import 'package:news_flight/constant.dart';
 import 'package:news_flight/model/article.dart';
 import 'package:news_flight/pages/comment/comment.dart';
 import 'package:news_flight/pages/home/components/arcticle_view.dart';
+import 'package:news_flight/widgets/flushbar/flush_notif_bar.dart';
 
 class BlogTile extends StatefulWidget {
   final String imageUrl, title, desc, url;
@@ -63,6 +64,14 @@ class _BlogTileState extends State<BlogTile> {
     // );
 
     // print("RUUUUUUUUUUUUUUUUUUUUUUN");
+
+    // (!widget.isBookmark) ?
+    //           FlushNotifBar.showFlushNotifBar(context, 'Added to Favorites', 'This plant has been added to Favorites.', 2) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Favorites ', 'This plant has been removed from Favorites', 2);
+    //                                 });
+
+    (!widget.isBookmark)
+        ? FlushNotifBar(title: 'Remove', message: 'dsssdsds')
+        : FlushNotifBar(title: 'Added', message: 'dsssdsds');
 
     return Icon(
       (!widget.isBookmark) ? Icons.bookmark_add : Icons.bookmark_added,
@@ -173,7 +182,8 @@ class _BlogTileState extends State<BlogTile> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Comment(),
+                                builder: (context) =>
+                                    Comment(title: widget.title),
                               ),
                             );
                           },
