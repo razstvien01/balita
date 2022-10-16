@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
 
-class FlushNotifBar extends StatelessWidget {
-  final String title, message;
 
-  const FlushNotifBar({
-    super.key,
-    required this.title,
-    required this.message,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Flushbar(
+class FlushNotifBar{
+  static void showFlushNotifBar(BuildContext context, String title, String message){
+    Flushbar(
       dismissDirection: FlushbarDismissDirection.HORIZONTAL,
       flushbarPosition: FlushbarPosition.BOTTOM,
       flushbarStyle: FlushbarStyle.FLOATING,
@@ -50,6 +42,6 @@ class FlushNotifBar extends StatelessWidget {
             color: Colors.green,
             fontFamily: "ShadowsIntoLightTwo"),
       ),
-    );
+    ).show(context);
   }
 }

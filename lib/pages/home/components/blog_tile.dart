@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -69,10 +70,6 @@ class _BlogTileState extends State<BlogTile> {
     //           FlushNotifBar.showFlushNotifBar(context, 'Added to Favorites', 'This plant has been added to Favorites.', 2) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Favorites ', 'This plant has been removed from Favorites', 2);
     //                                 });
 
-    (!widget.isBookmark)
-        ? FlushNotifBar(title: 'Remove', message: 'dsssdsds')
-        : FlushNotifBar(title: 'Added', message: 'dsssdsds');
-
     return Icon(
       (!widget.isBookmark) ? Icons.bookmark_add : Icons.bookmark_added,
       color: Colors.amber,
@@ -137,6 +134,24 @@ class _BlogTileState extends State<BlogTile> {
                                 widget.bm.add(articleModel);
                                 widget.isBookmark =
                                     glbArticles[widget.index].bookmark = true;
+
+                                Flushbar(
+                                  dismissDirection:
+                                      FlushbarDismissDirection.HORIZONTAL,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  reverseAnimationCurve: Curves.decelerate,
+                                  forwardAnimationCurve: Curves.elasticOut,
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  isDismissible: true,
+                                  message: 'Added to Bookmarks',
+                                  icon: Icon(
+                                    Icons.info_outline,
+                                    size: 28.0,
+                                    color: Colors.blue[300],
+                                  ),
+                                  duration: Duration(seconds: 2),
+                                  leftBarIndicatorColor: kLightColor,
+                                )..show(context);
                               });
                             } else {
                               setState(() {
@@ -153,7 +168,23 @@ class _BlogTileState extends State<BlogTile> {
                                     widget.bm.remove(widget.bm[i]);
                                   }
                                 }
-
+                                Flushbar(
+                                  dismissDirection:
+                                      FlushbarDismissDirection.HORIZONTAL,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  reverseAnimationCurve: Curves.decelerate,
+                                  forwardAnimationCurve: Curves.elasticOut,
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  isDismissible: true,
+                                  message: 'Removed from Bookmarks',
+                                  icon: Icon(
+                                    Icons.info_outline,
+                                    size: 28.0,
+                                    color: Colors.blue[300],
+                                  ),
+                                  duration: Duration(seconds: 2),
+                                  leftBarIndicatorColor: kLightColor,
+                                )..show(context);
                                 // widget.bm.remove(widget.bm[widget.index]);
                               });
                             }
