@@ -17,7 +17,7 @@ import 'package:news_flight/services/news.dart';
 
 class Home extends StatefulWidget {
   List<ArticleModel> articles;
-  
+
   Home({super.key, required this.articles});
 
   @override
@@ -28,7 +28,6 @@ class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance.currentUser;
   List<CategoryModel> categories = [];
   // List<ArticleModel> categories = [];
-  
 
   bool _loading = true;
 
@@ -37,14 +36,13 @@ class _HomeState extends State<Home> {
     super.initState();
     categories = getCategories();
     getNews();
-    
-    
   }
 
   void getNews() async {
     News news = News();
     await news.getNews();
-    widget.articles = news.news;
+    // widget.articles = news.news;
+    // glbArticles = news.news;
     // glbArticles = news.news;
 
     // final docUser = FirebaseFirestore.instance.collection('articles').doc('categories');
@@ -54,26 +52,38 @@ class _HomeState extends State<Home> {
     // });
 
     setState(() {
-      
-    
+      widget.articles = news.news;
     glbArticles = news.news;
       _loading = false;
     });
-    
-    
   }
 
+  // Stream<List<dynamic>> readUsers(){
+  //   return FirebaseFirestore.instance.collection('comments')
+  // }
+  bool loading(){
+    setState(() {
+      
+    });
+    
+    return _loading;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       backgroundColor: kDarkColor,
-      body: (_loading)
-          ? Center(
-              child: Container(
-                child: CircularProgressIndicator(),
+      // body: FutureBuilder<List<ArticleModel>?>(
+      //   future: widget.ar,
+      // ),
+      body: (loading())
+          ? GestureDetector(
+            child: Center(
+                child: Container(
+                  child: CircularProgressIndicator(),
+                ),
               ),
-            )
+          )
           : (!userGlbData['enable'])
               ? Center(
                   child: Text(
@@ -107,8 +117,12 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: ((context, index) {
+                          // setState(() {
+                            
+                          // });
                           return BlogTile(
-                            imageUrl: widget.articles[index].urlToImage as String,
+                            imageUrl:
+                                widget.articles[index].urlToImage as String,
                             title: widget.articles[index].title as String,
                             desc: widget.articles[index].description as String,
                             url: widget.articles[index].url as String,

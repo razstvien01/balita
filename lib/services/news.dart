@@ -74,6 +74,9 @@ class News {
       'general': allArticles,
       'total': allArticles.length,
     });
+    
+    // return news;
   }
+  
 
 }

@@ -19,12 +19,22 @@ class Bookmark extends StatefulWidget {
 class _BookmarkState extends State<Bookmark> {
   @override
   void initState() {}
+  
+  bool enable(){
+    bool en = false;
+    try {
+      en = !userGlbData['enable'];
+    } catch (e) {
+      
+    }
+    return en;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkColor,
-      body: (!userGlbData['enable'])
+      body: (enable())
           ? Center(
               child: Text(
                 'Account disabled',

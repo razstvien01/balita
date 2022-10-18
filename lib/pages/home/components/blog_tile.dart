@@ -35,40 +35,6 @@ class BlogTile extends StatefulWidget {
 
 class _BlogTileState extends State<BlogTile> {
   Icon togggleIcon() {
-    // bool added = false;
-
-    // for (int i = 0; i < widget.articles.length; ++i) {
-    //   if (widget.articles[i].title == widget.title) {
-    //     bool temp = widget.articles[i].bookmark as bool;
-    //     added = temp;
-    //   }
-    // }
-
-    // for(int i = 0; i < glbArticles.length; ++i){
-    //   if(glbArticles[i].title == widget.title){
-    //     bool temp = glbArticles[i].bookmark as bool;
-    //     notAdded = glbArticles[i].bookmark = !temp;
-    //   }
-    // }
-
-    // print("PASSED");
-
-    // glbArticles = widget.articles;
-
-    // setState(() {
-
-    // });
-    // return Icon(
-    //   (added == false) ? Icons.bookmark_add : Icons.bookmark_added,
-    //   color: Colors.amber,
-    //   size: 40,
-    // );
-
-    // print("RUUUUUUUUUUUUUUUUUUUUUUN");
-
-    // (!widget.isBookmark) ?
-    //           FlushNotifBar.showFlushNotifBar(context, 'Added to Favorites', 'This plant has been added to Favorites.', 2) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Favorites ', 'This plant has been removed from Favorites', 2);
-    //                                 });
 
     return Icon(
       (!widget.isBookmark) ? Icons.bookmark_add : Icons.bookmark_added,
