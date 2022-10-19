@@ -32,6 +32,7 @@ class _AccountsState extends State<Accounts> {
     return Scaffold(
       backgroundColor: kDarkColor,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -42,6 +43,7 @@ class _AccountsState extends State<Accounts> {
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: docIds.length,
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: GetUserInfo(documentId: docIds[index]),

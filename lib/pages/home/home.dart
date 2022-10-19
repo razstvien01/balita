@@ -30,44 +30,53 @@ class _HomeState extends State<Home> {
   // List<ArticleModel> categories = [];
 
   bool _loading = true;
-
+  
+  //* una nga matawag
   @override
   void initState() {
     super.initState();
-    categories = getCategories();
-    getNews();
+    categories = getCategories(); //* get category data and ui
+    getNews(); //* get general news
+    
+    print("RELOAD DATA");
   }
 
   void getNews() async {
     News news = News();
-    await news.getNews();
-    // widget.articles = news.news;
-    // glbArticles = news.news;
-    // glbArticles = news.news;
-
-    // final docUser = FirebaseFirestore.instance.collection('articles').doc('categories');
-
-    // await docUser.set({
-    //   'general': 'dsdssddsds',
-    // });
+    await news.getNews(); //* MUKuha siyag list of news from news API
+    widget.articles = news.news;
+    glbArticles = news.news;
 
     setState(() {
-      widget.articles = news.news;
-    glbArticles = news.news;
       _loading = false;
     });
+    
+    Future.delayed(Duration(seconds: 3), (){
+      setState(() {
+        
+      });
+    });
+    
+//     Future.Delayed(Duration(seconds: 2), () { // <-- Delay here
+
+// setState(() {
+
+// _isLoading = false; // <-- Code run after delay
+
+// });
+
   }
 
   // Stream<List<dynamic>> readUsers(){
   //   return FirebaseFirestore.instance.collection('comments')
   // }
-  bool loading(){
-    setState(() {
+  // bool loading(){
+  //   setState(() {
       
-    });
+  //   });
     
-    return _loading;
-  }
+  //   return _loading;
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,15 +85,15 @@ class _HomeState extends State<Home> {
       // body: FutureBuilder<List<ArticleModel>?>(
       //   future: widget.ar,
       // ),
-      body: (loading())
+      body: (_loading || userGlbData['enable'] == null)
           ? GestureDetector(
             child: Center(
                 child: Container(
-                  child: CircularProgressIndicator(),
+                  child: loadingDelayed(),
                 ),
               ),
           )
-          : (!userGlbData['enable'])
+          : (!userGlbData['enable'])  //* if account disalbe is true then mao na siya
               ? Center(
                   child: Text(
                     'Account disabled',
@@ -148,5 +157,10 @@ class _HomeState extends State<Home> {
                   ),
                 ),
     );
+  }
+
+  CircularProgressIndicator loadingDelayed() { 
+    Future.delayed(Duration(seconds: 5));
+    return CircularProgressIndicator();
   }
 }

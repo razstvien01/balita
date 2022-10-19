@@ -91,7 +91,7 @@ class _CommentState extends State<Comment> {
                 if (key == "articles") {
                   if (value[widget.title] != null) {
                     comments = value[widget.title];
-                        
+
                     n = value;
                   }
                   // print(comments);
@@ -140,78 +140,181 @@ class _CommentState extends State<Comment> {
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: Colors.deepPurpleAccent, //<-- SEE HERE
-                              ),
-                              borderRadius: BorderRadius.circular(kFixPadding),
-                            ),
-                            shadowColor: Colors.amber,
-                            elevation: 25,
-                            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                            color: kAccentColor,
-                            child: ClipPath(
-                              clipper: ShapeBorderClipper(
+                          return Stack(
+                            children: [
+                              Card(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(kFixPadding)),
-                              ),
-                              child: Container(
-                                padding: const EdgeInsets.all(kLessPadding),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    left: BorderSide(
-                                        color: kLightColor, width: 5),
+                                  side: BorderSide(
+                                    color:
+                                        Colors.deepPurpleAccent, //<-- SEE HERE
                                   ),
+                                  borderRadius:
+                                      BorderRadius.circular(kFixPadding),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: Colors.white,
-                                              width: 5.0,
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                spreadRadius: 2,
-                                                blurRadius: 10,
-                                                color: Colors.black
-                                                    .withOpacity(0.1),
-                                                offset: Offset(0, 10),
-                                              )
-                                            ],
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                  'https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'),
+                                shadowColor: Colors.amber,
+                                elevation: 25,
+                                margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                color: kAccentColor,
+                                child: ClipPath(
+                                  clipper: ShapeBorderClipper(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(kFixPadding)),
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(kLessPadding),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        left: BorderSide(
+                                            color: kLightColor, width: 5),
+                                      ),
+                                    ),
+                                    child: ClipRect(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  width: 50,
+                                                  height: 50,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color: Colors.white,
+                                                      width: 5.0,
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        spreadRadius: 2,
+                                                        blurRadius: 10,
+                                                        color: Colors.black
+                                                            .withOpacity(0.1),
+                                                        offset: Offset(0, 10),
+                                                      )
+                                                    ],
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: NetworkImage(
+                                                          'https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: kLessPadding,
+                                                ),
+                                                Text(
+                                                  comments[index]['username'],
+                                                  style: kHeadTextStyle,
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    print('${comments[index]['username']}\'s comment sa been reported');
+                                                    print(comments[index]['comment']);
+                                                    
+                                                    
+                                                    
+                                                    FirebaseFirestore.instance.collection('social').doc('reports').update(
+                                                      {comments[index]['username']: comments[index]['comment']}
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.report,
+                                                    color: Colors.red[300],
+                                                  ),
+                                                )
+                                              ],
                                             ),
                                           ),
-                                        ),
-                                        
-                                        SizedBox(width: kLessPadding,),
-                                        Text(comments[index]['username'],
-                                            style: kHeadTextStyle),
-                                      ],
+                                          SizedBox(
+                                            height: 6.0,
+                                          ),
+                                          Text(
+                                            comments[index]['comment'],
+                                            style: kSmallTextStyle,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(
-                                      height: 6.0,
-                                    ),
-                                    Text(
-                                      comments[index]['comment'],
-                                      style: kSmallTextStyle,
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
+                            // child: Card(
+                            //   shape: RoundedRectangleBorder(
+                            //     side: BorderSide(
+                            //       color: Colors.deepPurpleAccent, //<-- SEE HERE
+                            //     ),
+                            //     borderRadius: BorderRadius.circular(kFixPadding),
+                            //   ),
+                            //   shadowColor: Colors.amber,
+                            //   elevation: 25,
+                            //   margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            //   color: kAccentColor,
+                            //   child: ClipPath(
+                            //     clipper: ShapeBorderClipper(
+                            //       shape: RoundedRectangleBorder(
+                            //           borderRadius:
+                            //               BorderRadius.circular(kFixPadding)),
+                            //     ),
+                            //     child: Container(
+                            //       padding: const EdgeInsets.all(kLessPadding),
+                            //       decoration: BoxDecoration(
+                            //         border: Border(
+                            //           left: BorderSide(
+                            //               color: kLightColor, width: 5),
+                            //         ),
+                            //       ),
+                            //       child: Column(
+                            //         crossAxisAlignment: CrossAxisAlignment.start,
+                            //         children: [
+                            //           Row(
+                            //             children: [
+                            //               Container(
+                            //                 width: 50,
+                            //                 height: 50,
+                            //                 decoration: BoxDecoration(
+                            //                   border: Border.all(
+                            //                     color: Colors.white,
+                            //                     width: 5.0,
+                            //                   ),
+                            //                   boxShadow: [
+                            //                     BoxShadow(
+                            //                       spreadRadius: 2,
+                            //                       blurRadius: 10,
+                            //                       color: Colors.black
+                            //                           .withOpacity(0.1),
+                            //                       offset: Offset(0, 10),
+                            //                     )
+                            //                   ],
+                            //                   shape: BoxShape.circle,
+                            //                   image: DecorationImage(
+                            //                     fit: BoxFit.cover,
+                            //                     image: NetworkImage(
+                            //                         'https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'),
+                            //                   ),
+                            //                 ),
+                            //               ),
+
+                            //               SizedBox(width: kLessPadding,),
+                            //               Text(comments[index]['username'],
+                            //                   style: kHeadTextStyle),
+                            //             ],
+                            //           ),
+                            //           SizedBox(
+                            //             height: 6.0,
+                            //           ),
+                            //           Text(
+                            //             comments[index]['comment'],
+                            //             style: kSmallTextStyle,
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           );
                           // return Text(
                           //   (comments[index] as Map)['comment'],
@@ -257,10 +360,9 @@ class _CommentState extends State<Comment> {
                           onPressed: () {
                             // if(_commentController.text == '')
                             //   return;
-                            
-                            if(_commentController.text == '')
-                              return;
-                            
+
+                            if (_commentController.text == '') return;
+
                             setState(() {
                               // comments.add(_commentController.text);
                               comments.add({
@@ -276,11 +378,12 @@ class _CommentState extends State<Comment> {
                               String temp = widget.title;
 
                               // print(m);
-                              
-                              Map<String, dynamic> newData = snapshot.data![0]['articles'];
-                              
+
+                              Map<String, dynamic> newData =
+                                  snapshot.data![0]['articles'];
+
                               newData[widget.title] = comments;
-                              
+
                               FirebaseFirestore.instance
                                   .collection('social')
                                   .doc('comments')
@@ -302,23 +405,22 @@ class _CommentState extends State<Comment> {
                             //     },
                             //   );
                             // });
-                            
+
                             print('SNAPSHOT');
                             print(snapshot.data![0]['articles']);
-                            
-                            
+
                             // Map<String, dynamic> newData = snapshot.data![0]['articles'];
                             // Map<String, dynamic> data = {'articles': comments};
                             // try {
                             //   Map<String, dynamic> newData = snapshot.data![0]['articles'];
-                            
+
                             // newData[widget.title] = comments;
                             // } catch (e) {
                             //   // newData = {
                             //   //   widget.title: comments
                             //   // };
                             // }
-                            
+
                             // FirebaseFirestore.instance
                             //       .collection('social')
                             //       .doc('comments')

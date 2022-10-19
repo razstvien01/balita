@@ -356,13 +356,15 @@ class _EditProfileUIState extends State<EditProfileUI> {
         elevation: 0.0,
         // ignore: prefer_const_literals_to_create_immutables
         actions: <Widget>[
-          const IconButton(
+          IconButton(
             icon: Icon(
               Icons.check_box_outlined,
               color: Colors.white,
             ),
             tooltip: 'Save',
-            onPressed: null,
+            onPressed: (){
+              
+            },
           )
         ],
       ),
@@ -450,59 +452,59 @@ class _EditProfileUIState extends State<EditProfileUI> {
               SizedBox(
                 height: 10.0,
               ),
-              Text(
-                'Email:',
-                style: TextStyle(
-                  letterSpacing: 2.0,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Card(
-                elevation: 0,
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 40.0,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: buildTextField('', 'Enter Email'),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                'Age:',
-                style: TextStyle(
-                  letterSpacing: 2.0,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Card(
-                elevation: 0,
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 40.0,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      ' 21',
-                      style: TextStyle(
-                        letterSpacing: 1.0,
-                        color: Colors.grey,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // Text(
+              //   'Email:',
+              //   style: TextStyle(
+              //     letterSpacing: 2.0,
+              //     color: Colors.white,
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // Card(
+              //   elevation: 0,
+              //   child: SizedBox(
+              //     width: double.infinity,
+              //     height: 40.0,
+              //     child: Align(
+              //       alignment: Alignment.centerLeft,
+              //       child: buildTextField('', 'Enter Email'),
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // Text(
+              //   'Age:',
+              //   style: TextStyle(
+              //     letterSpacing: 2.0,
+              //     color: Colors.white,
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // Card(
+              //   elevation: 0,
+              //   child: SizedBox(
+              //     width: double.infinity,
+              //     height: 40.0,
+              //     child: Align(
+              //       alignment: Alignment.centerLeft,
+              //       child: Text(
+              //         ' 21',
+              //         style: TextStyle(
+              //           letterSpacing: 1.0,
+              //           color: Colors.grey,
+              //           fontSize: 20.0,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -510,7 +512,12 @@ class _EditProfileUIState extends State<EditProfileUI> {
     );
   }
 
+  void newMethod() {
+            
+          }
+
   Widget buildTextField(String labelText, String hints) {
+    final _userController = TextEditingController();
     return TextField(
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(bottom: 3),
@@ -518,6 +525,7 @@ class _EditProfileUIState extends State<EditProfileUI> {
         labelText: labelText,
         hintText: hints,
       ),
+      controller: _userController,
     );
   }
 }

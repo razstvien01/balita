@@ -8,6 +8,7 @@ import 'package:news_flight/pages/bookmark/bookmark.dart';
 import 'package:news_flight/pages/home/home.dart';
 import 'package:news_flight/pages/intro/components/empty_appbar.dart';
 import 'package:news_flight/pages/profile/profile.dart';
+import 'package:news_flight/pages/report/report.dart';
 import 'package:news_flight/pages/signup/components/default_button.dart';
 
 class NavBar extends StatefulWidget {
@@ -47,8 +48,10 @@ class _NavBarState extends State<NavBar> {
         ? [
             Home(articles: glbArticles),
             Bookmark(bm: bm),
-            const Profile(),
+            const Report(),
             const Accounts(),
+            
+            const Profile(),
           ]
         : [
             Home(articles: glbArticles),
@@ -57,12 +60,15 @@ class _NavBarState extends State<NavBar> {
           ];
   }
 
-  //List of the pages titles
+  //List of the pages titlescons
   List<String> titleList = [
     'General',
     'Bookmark',
+    
+    'Report Logs',
+    'Manage Accounts',
     'Profile',
-    'Manage Accounts'
+    
   ];
 
   void onTap(int index) {
@@ -77,8 +83,10 @@ class _NavBarState extends State<NavBar> {
         ? <Widget>[
             Icon(Icons.home, size: 25),
             Icon(Icons.bookmark, size: 25),
+            
+            Icon(Icons.report, size: 25),
+            Icon(Icons.manage_accounts, size: 25),
             Icon(Icons.person, size: 25),
-            Icon(Icons.manage_accounts, size: 25)
           ]
         : <Widget>[
             Icon(Icons.home, size: 25),

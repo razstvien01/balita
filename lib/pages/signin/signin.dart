@@ -15,21 +15,30 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
+  
+  //* tig kuha sa text nga naa sa textfield
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  
+  //* sign in button nga function
   Future signIn() async {
     
     try {
+      //* gi sign in ang imong account gamit ang details nga naa sa textfield
+      //* e verify ang details if na exist ba  sa database
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
       //* IMPORTANTE NI IF MAG LOG IN
+      
+      //* mo navigate siya sa home page
       Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
+      
+      
     } on FirebaseAuthException catch (e) {
-      print(e);
+      
       formKey.currentState!.validate();
       showDialog(
         context: context,

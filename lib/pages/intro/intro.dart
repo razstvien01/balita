@@ -16,7 +16,8 @@ class Intro extends StatefulWidget {
 class _IntroState extends State<Intro> {
   //* Page controller
   var _controller = PageController();
-
+  
+  //* 
   //* current page variable
   var _currentPage = 0;
 
