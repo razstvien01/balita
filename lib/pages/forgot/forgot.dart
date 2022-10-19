@@ -15,14 +15,17 @@ class Forgot extends StatefulWidget {
 }
 
 class _ForgotState extends State<Forgot> {
+  //* controls the text in the email textfield
   final _emailController = TextEditingController();
-
+  
+  //* dispose the value of _email controller to avoid memory leakage
   @override
   void dispose() {
     _emailController.dispose();
     super.dispose();
   }
-
+  
+  //* passwordReset button
   Future passwordReset() async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(
@@ -38,7 +41,6 @@ class _ForgotState extends State<Forgot> {
       );
       // Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
     } on FirebaseAuthException catch (e) {
-      print(e);
       showDialog(
         context: context,
         builder: (context) {

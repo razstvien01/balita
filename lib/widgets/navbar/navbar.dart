@@ -21,23 +21,23 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int index = 0;
   final user = FirebaseAuth.instance.currentUser;
-  
+
   @override
-  void initState(){
+  void initState() {
     // bmArticles.forEach((key, value) {
     //   ArticleModel article = ArticleModel(
     //     title: key,
     //     author: value['author'],
     //     bookmark: value['bookmark'],
     //     content: value['content'],
-    //     description: value['description'], 
+    //     description: value['description'],
     //     url: value['url'],
     //     urlToImage: value['urlToImage'],
     //   );
-      
+
     //   bm.add(article);
     // });
-    
+
     // print("First");
     // print(bm);
     // print(bmArticles);
@@ -50,7 +50,6 @@ class _NavBarState extends State<NavBar> {
             Bookmark(bm: bm),
             const Report(),
             const Accounts(),
-            
             const Profile(),
           ]
         : [
@@ -61,15 +60,7 @@ class _NavBarState extends State<NavBar> {
   }
 
   //List of the pages titlescons
-  List<String> titleList = [
-    'General',
-    'Bookmark',
-    
-    'Report Logs',
-    'Manage Accounts',
-    'Profile',
-    
-  ];
+  List<String> titleList = [];
 
   void onTap(int index) {
     setState(() {
@@ -83,7 +74,6 @@ class _NavBarState extends State<NavBar> {
         ? <Widget>[
             Icon(Icons.home, size: 25),
             Icon(Icons.bookmark, size: 25),
-            
             Icon(Icons.report, size: 25),
             Icon(Icons.manage_accounts, size: 25),
             Icon(Icons.person, size: 25),
@@ -92,6 +82,20 @@ class _NavBarState extends State<NavBar> {
             Icon(Icons.home, size: 25),
             Icon(Icons.bookmark, size: 25),
             Icon(Icons.person, size: 25),
+          ];
+
+    titleList = (user?.email == "admin@gmail.com")
+        ? [
+            'General',
+            'Bookmark',
+            'Report Logs',
+            'Manage Accounts',
+            'Profile',
+          ]
+        : [
+            'General',
+            'Bookmark',
+            'Profile',
           ];
 
     return Scaffold(

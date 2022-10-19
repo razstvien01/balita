@@ -17,7 +17,7 @@ class IntroButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        //* reveals skip button in page 0 to 1 and hides in page 3
+        //* if the current page kay page 0 or page 1
         (_currentPage == 0 || _currentPage == 1)
             ? ClearDefaultButton(
                 name: 'Skip',
@@ -25,11 +25,6 @@ class IntroButton extends StatelessWidget {
                   Navigator.of(context).pushReplacementNamed(
                     '/onboard'
                   );
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(builder: (context) {
-                  //     return Onboard();
-                  //   }),
-                  // );
                 },
               )
             : ClearDefaultButton(

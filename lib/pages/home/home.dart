@@ -27,20 +27,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance.currentUser;
   List<CategoryModel> categories = [];
-  // List<ArticleModel> categories = [];
-
   bool _loading = true;
-  
+
   //* una nga matawag
   @override
   void initState() {
     super.initState();
-    categories = getCategories(); //* get category data and ui
-    getNews(); //* get general news
-    
-    print("RELOAD DATA");
+    categories = getCategories(); //* get category data list
+    getNews();
   }
 
+  //* get general news
   void getNews() async {
     News news = News();
     await news.getNews(); //* MUKuha siyag list of news from news API
@@ -50,33 +47,14 @@ class _HomeState extends State<Home> {
     setState(() {
       _loading = false;
     });
-    
-    Future.delayed(Duration(seconds: 3), (){
-      setState(() {
-        
-      });
+
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {});
     });
-    
-//     Future.Delayed(Duration(seconds: 2), () { // <-- Delay here
-
-// setState(() {
-
-// _isLoading = false; // <-- Code run after delay
-
-// });
-
   }
 
-  // Stream<List<dynamic>> readUsers(){
-  //   return FirebaseFirestore.instance.collection('comments')
-  // }
-  // bool loading(){
-  //   setState(() {
-      
-  //   });
-    
-  //   return _loading;
-  // }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,13 +65,14 @@ class _HomeState extends State<Home> {
       // ),
       body: (_loading || userGlbData['enable'] == null)
           ? GestureDetector(
-            child: Center(
+              child: Center(
                 child: Container(
-                  child: loadingDelayed(),
+                  child: CircularProgressIndicator(),
                 ),
               ),
-          )
-          : (!userGlbData['enable'])  //* if account disalbe is true then mao na siya
+            )
+          : (!userGlbData[
+                  'enable']) //* if account disalbe is true then mao na siya
               ? Center(
                   child: Text(
                     'Account disabled',
@@ -127,7 +106,7 @@ class _HomeState extends State<Home> {
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: ((context, index) {
                           // setState(() {
-                            
+
                           // });
                           return BlogTile(
                             imageUrl:
@@ -157,10 +136,5 @@ class _HomeState extends State<Home> {
                   ),
                 ),
     );
-  }
-
-  CircularProgressIndicator loadingDelayed() { 
-    Future.delayed(Duration(seconds: 5));
-    return CircularProgressIndicator();
   }
 }

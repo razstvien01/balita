@@ -17,24 +17,50 @@ class Bookmark extends StatefulWidget {
 }
 
 class _BookmarkState extends State<Bookmark> {
+  //* loads the screen
   @override
-  void initState() {}
+  void initState() {
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {});
+    });
+  }
   
-  bool enable(){
-    bool en = false;
-    try {
-      en = !userGlbData['enable'];
-    } catch (e) {
-      
-    }
-    return en;
+  //* generate bookmark articles
+  SingleChildScrollView genBMArticles() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ListView.builder(
+            itemCount: widget.bm.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return BlogTile(
+                imageUrl: widget.bm[index].urlToImage as String,
+                title: widget.bm[index].title as String,
+                desc: widget.bm[index].description as String,
+                url: widget.bm[index].url as String,
+                bm: widget.bm,
+                articles: glbArticles,
+                function: () {
+                  setState(() {});
+                },
+                index: index,
+                isBookmark: widget.bm[index].bookmark as bool,
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkColor,
-      body: (enable())
+      body: (!userGlbData['enable'])
           ? Center(
               child: Text(
                 'Account disabled',
@@ -46,33 +72,7 @@ class _BookmarkState extends State<Bookmark> {
                   child: Text('No Articles Saved', style: kSubTextStyle),
                 )
               // : Text('Pota', style: kSubTextStyle,)
-              : SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        itemCount: widget.bm.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return BlogTile(
-                            imageUrl: widget.bm[index].urlToImage as String,
-                            title: widget.bm[index].title as String,
-                            desc: widget.bm[index].description as String,
-                            url: widget.bm[index].url as String,
-                            bm: widget.bm,
-                            articles: glbArticles,
-                            function: () {
-                              setState(() {});
-                            },
-                            index: index,
-                            isBookmark: widget.bm[index].bookmark as bool,
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+              : genBMArticles(),
     );
   }
 }

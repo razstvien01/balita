@@ -26,6 +26,8 @@ class _SignUpState extends State<SignUp> {
   final _passwordController2 = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
+  
+  //* dispose function
   @override
   void dispose() {
     _userController.dispose();
@@ -35,7 +37,7 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
   }
 
-  //* Function nga mag sign up sa accout details sa databse
+  //* sign up button function
   Future signUp() async {
     formKey.currentState!.validate();
     if (_passwordController1.text.trim() == _passwordController2.text.trim()) {
@@ -52,7 +54,7 @@ class _SignUpState extends State<SignUp> {
     }
   }
   
-  //* function nga mo add sa sa account details padung sa firebase database
+  //* Add user detail function
   Future addUserDetails(String username, String email) async {
     final currentUser = FirebaseAuth.instance.currentUser;
     
