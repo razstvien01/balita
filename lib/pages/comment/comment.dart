@@ -1,7 +1,8 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
-import 'package:news_flight/pages/signup/components/default_textfield.dart';
+
 
 class Comment extends StatefulWidget {
   final String title;
@@ -78,53 +79,14 @@ class _CommentState extends State<Comment> {
             });
 
             // print(comments);
-            
-            snapshot.data![1].forEach((key, value) {
-              // print('$key : $value');
-              // value.forEach((key, value) {
-              //     if (key == "articles") {
-              // if (value[widget.title] != null) {
-              //   comments = value[widget.title];
-              //   // }
-              // }
-              // }
-              // );
-              reports[key] = value;
-            });
-            
-            print(reports);
-            // snapshot.data?.forEach((element) {
 
-            //   print(element);
-            //   element.forEach((key, value) {
-            //       if (key == "articles") {
-            //         if (value[widget.title] != null) {
-            //           comments = value[widget.title];
-            //         }
-            //       }
-            //     });
-            //   // if (element == 'comments') {
-            //   //   print("passed 1");
-            //   //   element.forEach((key, value) {
-            //   //     if (key == "articles") {
-            //   //       if (value[widget.title] != null) {
-            //   //         comments = value[widget.title];
-            //   //       }
-            //   //     }
-            //   //   });
-            //   // }
-
-            //   // if(element == 'reports'){
-            //   //   print('pass');
-            //   //   element.forEach((key, value) {
-            //   //     reports[key] = value;
-            //   //   });
-            //   // }
-
+            // snapshot.data![1].forEach((key, value) {
+            //   reports[key] = value;
             // });
 
-            // print("-----------------------------------------");
-            // print(reports);
+            snapshot.data![1].forEach((key, value) {
+              reports[key] = value;
+            });
 
             return Container(
               height: MediaQuery.of(context).size.height,
@@ -209,31 +171,58 @@ class _CommentState extends State<Comment> {
                                                 ),
                                                 IconButton(
                                                   onPressed: () {
+                                                    List uComments = [];
+                                                    try {
+                                                      uComments = reports[
+                                                          comments[index]
+                                                              ['username']];
+                                                      print(uComments);
+                                                    } catch (e) {}
+
+                                                    print(uComments);
                                                     print(
-                                                        '${comments[index]['username']}\'s comment sa been reported');
-                                                    print(comments[index]
-                                                        ['comment']);
-                                                        
-                                                    List uComments = reports[comments[index]['username']];
-                                                    
-                                                    print('reports ----------------');
+                                                        'reports ----------------');
                                                     print(reports);
-                                                    
-                                                    uComments.add(comments[index]
-                                                        ['comment']);
-                                                        
-                                                      // List com = [];
-                                                      
-                                                      // uComments.contains(;)
-                                                      
-                                                      
-                                                      // com.add(comments[index]);
+
+                                                    uComments.add(
+                                                        comments[index]
+                                                            ['comment']);
+
+                                                    Flushbar(
+                                                      dismissDirection:
+                                                          FlushbarDismissDirection
+                                                              .HORIZONTAL,
+                                                      flushbarStyle:
+                                                          FlushbarStyle
+                                                              .FLOATING,
+                                                      reverseAnimationCurve:
+                                                          Curves.decelerate,
+                                                      forwardAnimationCurve:
+                                                          Curves.elasticOut,
+                                                      flushbarPosition:
+                                                          FlushbarPosition.TOP,
+                                                      isDismissible: true,
+                                                      message:
+                                                          '${comments[index]['username']}\'s comment has been reported',
+                                                      icon: Icon(
+                                                        Icons.info_outline,
+                                                        size: 28.0,
+                                                        color: Colors.blue[300],
+                                                      ),
+                                                      duration:
+                                                          Duration(seconds: 2),
+                                                      leftBarIndicatorColor:
+                                                          kLightColor,
+                                                    )..show(context);
 
                                                     FirebaseFirestore.instance
                                                         .collection('social')
                                                         .doc('reports')
-                                                        .update({comments[index]['username']: uComments}
-                                                     );
+                                                        .update({
+                                                      comments[index]
+                                                              ['username']:
+                                                          uComments,
+                                                    });
                                                   },
                                                   icon: Icon(
                                                     Icons.report,
@@ -308,7 +297,7 @@ class _CommentState extends State<Comment> {
                               print(widget.title);
 
                               String temp = widget.title;
-                              
+
                               Map<String, dynamic> newData =
                                   snapshot.data![0]['articles'];
 

@@ -44,7 +44,7 @@ class IntroButton extends StatelessWidget {
           ),
         ),
         
-        //* hides skip button in page 0 to 1 and shows in page 3
+        //* if current page kay 2
         (_currentPage == 2)
             ? ClearDefaultButton(
                 name: 'Done',

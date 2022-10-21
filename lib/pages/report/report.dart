@@ -52,16 +52,7 @@ class _ReportState extends State<Report> {
 
               reports.forEach((key, value) {
                 List v = value;
-                // w.addAll(v);
-
-                // w.forEach((element) {
-                //   print(element);
-                //   wid.add(
-                //     Text('${key}: ${element}', style: kSmallTextStyle,)
-                //   );
-                // });
-
-                for (int i = v.length - 1; i > 0; --i) {
+                for (int i = v.length - 1; i >= 0; --i) {
                   wid.add(
                     Card(
                       // margin: EdgeInsets.
@@ -93,6 +84,7 @@ class _ReportState extends State<Report> {
               });
 
               // wid.sort()
+              // return Text(reports.toString(), style: kSmallTextStyle);
 
               return SingleChildScrollView(
                 child: Column(

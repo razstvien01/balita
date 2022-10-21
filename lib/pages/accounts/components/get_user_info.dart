@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,26 @@ class _GetUserInfoState extends State<GetUserInfo> {
               IconButton(
                 onPressed: () {
                   setState(() {
+                    Flushbar(
+                      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                      flushbarStyle: FlushbarStyle.FLOATING,
+                      reverseAnimationCurve: Curves.decelerate,
+                      forwardAnimationCurve: Curves.elasticOut,
+                      flushbarPosition: FlushbarPosition.TOP,
+                      isDismissible: true,
+                      message: (!data['enable'])
+                          ? '${data['username']}\'s account has been enabled'
+                          : '${data['username']}\'s account has been disabled',
+                      // '$data['username']\' account has been ',
+                      icon: Icon(
+                        Icons.info_outline,
+                        size: 28.0,
+                        color: Colors.blue[300],
+                      ),
+                      duration: Duration(seconds: 2),
+                      leftBarIndicatorColor: kLightColor,
+                    )..show(context);
+
                     FirebaseFirestore.instance
                         .collection('users')
                         .doc(widget.documentId)
@@ -49,9 +70,7 @@ class _GetUserInfoState extends State<GetUserInfo> {
                   });
                 },
                 icon: Icon(
-                  (!data['enable'])
-                      ? Icons.no_accounts
-                      : Icons.account_circle,
+                  (!data['enable']) ? Icons.no_accounts : Icons.account_circle,
                   color: kPrimaryColor,
                 ),
               ),

@@ -25,6 +25,7 @@ class _IntroState extends State<Intro> {
   Widget build(BuildContext context) {
     _controller.addListener(() {
       setState(() {
+        //* store the index of current page
         _currentPage = _controller.page?.round() as int;
       });
     });
