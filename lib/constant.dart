@@ -40,7 +40,7 @@ const String trophy = 'assets/images/trophy.png';
 const String chat = 'assets/images/chat.png';
 const String whiteShape = 'assets/images/whitebg.svg';
 const String logo = 'assets/images/logo_nf.png';
-const String newspaper = 'assets/images/newspaper.png';
+const String newspaper = 'assets/images/pieChart.png';
 
 //* Head text style
 const kHeadTextStyle = TextStyle(
@@ -98,6 +98,7 @@ const List<Map<String, String>> introData = [
   },
 ];
 
+//* Validators
 String? emailValidator(String? value) {
   if (value!.isEmpty) {
     return 'Must be filled';
