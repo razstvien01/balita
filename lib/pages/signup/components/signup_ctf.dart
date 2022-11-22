@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_flight/constant.dart';
 import 'package:news_flight/pages/signup/components/default_textfield.dart';
 
-class SignUpCTF extends StatelessWidget {
+class SignUpCTF extends StatefulWidget {
   const SignUpCTF({
     super.key,
     required this.formKey,
@@ -22,20 +22,26 @@ class SignUpCTF extends StatelessWidget {
   final TextEditingController _passwordController2;
 
   @override
+  State<SignUpCTF> createState() => _SignUpCTFState();
+}
+
+class _SignUpCTFState extends State<SignUpCTF> {
+  bool _isObscure = true;
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
       child: Form(
-        key: formKey,
+        key: widget.formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             DefaultTextField(
               validator: (value) {
                 return null;
               },
-              controller: _userController,
+              controller: widget._userController,
               hintText: 'Username',
               icon: Icons.person,
               keyboardType: TextInputType.text,
@@ -46,7 +52,7 @@ class SignUpCTF extends StatelessWidget {
             ),
             DefaultTextField(
               validator: emailValidator,
-              controller: _emailController,
+              controller: widget._emailController,
               hintText: 'Email Address',
               icon: Icons.email,
               keyboardType: TextInputType.emailAddress,
@@ -57,22 +63,26 @@ class SignUpCTF extends StatelessWidget {
             ),
             DefaultTextField(
               validator: passwordValidator,
-              controller: _passwordController1,
+              controller: widget._passwordController1,
               hintText: 'Password',
               icon: Icons.lock,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
+              
             ),
             SizedBox(
               height: kDefaultPadding,
             ),
             DefaultTextField(
               validator: passwordValidator,
-              controller: _passwordController2,
+              controller: widget._passwordController2,
               hintText: 'Confirm Password',
               icon: Icons.lock,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
+              isObscure: () {
+                
+              },
             ),
           ],
         ),
