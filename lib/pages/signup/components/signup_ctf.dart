@@ -27,6 +27,7 @@ class SignUpCTF extends StatefulWidget {
 
 class _SignUpCTFState extends State<SignUpCTF> {
   bool _isObscure = true;
+  bool _isObscure1 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +68,12 @@ class _SignUpCTFState extends State<SignUpCTF> {
               hintText: 'Password',
               icon: Icons.lock,
               keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
-              
+              obscureText: _isObscure,
+              isObscure: () {
+                setState(() {
+                  _isObscure = !_isObscure;
+                });
+              },
             ),
             SizedBox(
               height: kDefaultPadding,
@@ -79,9 +84,11 @@ class _SignUpCTFState extends State<SignUpCTF> {
               hintText: 'Confirm Password',
               icon: Icons.lock,
               keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
+              obscureText: _isObscure1,
               isObscure: () {
-                
+                setState(() {
+                  _isObscure1 = !_isObscure1;
+                });
               },
             ),
           ],
